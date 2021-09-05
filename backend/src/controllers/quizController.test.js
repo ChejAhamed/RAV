@@ -1,4 +1,4 @@
-const quizController = require('./quizController');
+const quizController = require('./quizControllers');
 const Quiz = require('../models/quizModel');
 
 jest.mock('../models/quizModel');
