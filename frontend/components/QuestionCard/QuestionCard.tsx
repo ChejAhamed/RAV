@@ -4,9 +4,9 @@ type Props={
     question:string,
     answers:string[],
     callback:any,
-    userAnswer:boolean,
-    questionNumber:Number,
-    totalQuestions:Number
+    userAnswer:any,
+    questionNumber:number,
+    totalQuestions:number
 }
 const QuestionCard:React.FC<Props> =({question,
     answers,
