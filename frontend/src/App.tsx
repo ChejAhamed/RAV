@@ -1,11 +1,13 @@
 import React from 'react';
 import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom'
+import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard/Dashboard'
 import Header from './components/Header/Header';
 import NotFound from './components/NotFound/NotFound';
+import configureStore from './redux/store';
 function App() {
   return (
-    <>
+    <Provider store={configureStore()}>
     <BrowserRouter>
       <Header />
         <Switch>
@@ -15,7 +17,7 @@ function App() {
           <Route component={NotFound} />
         </Switch>
     </BrowserRouter>
-    </>
+    </Provider>
   );
 }
 
