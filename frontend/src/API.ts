@@ -1,9 +1,10 @@
+import { shuffleArray } from "./Utils";
 
 export type Question = {
     category:string,
     correct_answer:string,
     difficulty:string,
-    incorrect_answer:String[],
+    incorrect_answers:String[],
     question:string,
     type:string
 }
@@ -19,6 +20,6 @@ export const fetchQuizQuestions=async (amount:number, Difficulty:any)=>{
     const data = await (await (await fetch(endpoint)).json())
     return data.results.map((question:Question)=>(
         {...question,
-            answer:
+            answers:shuffleArray([...question.incorrect_answers,question.correct_answer])
     }))
 }
