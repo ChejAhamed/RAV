@@ -7,9 +7,10 @@ const Header:React.FC =()=>{
         <h1>HEADEERRR</h1>
         <nav>
           <Link to="/dashboard">Dashboard</Link>
-          <Link to="/Profile">Profile</Link>
+          <Link to="/profile">Profile</Link>
+          <Link to="/statistics">Statistics</Link>
         </nav>
       </header>
     )
 }
-export default Header
+export default Header;
