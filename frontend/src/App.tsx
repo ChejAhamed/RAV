@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Profile from './pages/Profile/Profile';
 import NotFound from './pages/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
+import Statistics from './pages/Statistics/Statiscs';
 import configureStore from './redux/store';
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' exact component={Dashboard}/>
           <Redirect path='/dashboard' to='/'/>
           <Route path="/profile" component={Profile} />
+          <Route path="/statistics" component={Statistics} />
           <Route component={NotFound} />
         </Switch>
     </BrowserRouter>
