@@ -33,6 +33,7 @@ const Dashboard = () => {
   //-----------DASHBOARD
   const [disableSubmitNumberButton, setDisableSubmitNumberButton] = useState(false);
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = useState(false);
+  
   const [disableSubmitButton, setDisableSubmitButton] = useState(true);
   const handlerTheme=(themeSelected: String)=>{
     return (event: React.MouseEvent) => {
@@ -73,7 +74,13 @@ const Dashboard = () => {
     }
   
   }
-  
+  const handlerResetOptions=()=>{
+    return (event: React.MouseEvent) => {
+    if (disableSubmitButton===false){
+      setDisableSubmitButton(true)
+    }
+    }
+  }
   return (
     
     <div>
@@ -93,16 +100,20 @@ const Dashboard = () => {
         <h2>Choose the number of the quiz</h2>
           <div className='number-options'>
             <button className='button' onClick={handlerQuestionNumber(5)}>5</button>
-            <button className='button'onClick={handlerQuestionNumber(10)}>10</button>
-            <button className='button'onClick={handlerQuestionNumber(15)}>15</button>
-            <button className='button'onClick={handlerQuestionNumber(20)}>20</button>
+            <button className='button' onClick={handlerQuestionNumber(10)}>10</button>
+            <button className='button' onClick={handlerQuestionNumber(15)}>15</button>
+            <button className='button' onClick={handlerQuestionNumber(20)}>20</button>
           </div>
           
         </div>
         <div>
         <h2>Ready?</h2>
-          <div className='submite'>
-            <button className='button' disabled={disableSubmitButton} onClick={handlerSubmit(handlerQuestionNumber,handlerTheme)}>Submit</button>
+          <div className='submit'>
+            <button className='button' disabled={disableSubmitButton} onClick={handlerSubmit(handlerQuestionNumber,handlerTheme)}>Start Quiz</button>
+          
+          </div>
+          <div className='reset'>
+            <button className='button'  onClick={handlerResetOptions()}>Reset Choice</button>
           
           </div>
           
