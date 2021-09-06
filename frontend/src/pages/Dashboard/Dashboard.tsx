@@ -38,27 +38,21 @@ const Dashboard = () => {
       <p>Loading Questions...</p>
         
        <ul> DD:{ quizz?.map((quiz: any) => 
-         <>
-           <li key={quiz?.description}>
+         <div key={quiz?.description}>
+           <li>
             Pregunta: {quiz?.description}
            </li>
-           {console.log(quiz?.description)}
+           
            {''}
            <ul>{quiz.alternatives?.map((alternative: any) => 
               <li key={alternative?.text}>
                 respuesta:{alternative?.text}
-                {console.log(alternative?.text)}
               </li>
             
               )}
             </ul>
-            </>)}
+            </div>)}
         </ul> 
-        
-      
-
-
-      
 
     </div>
   );
