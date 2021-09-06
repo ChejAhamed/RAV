@@ -30,8 +30,19 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(loadAllQuiz());
   },[]);
-  
-  
+  //-----------DASHBOARD
+  const handlerQuestionNumber=(numberOfQuizSelected: Number)=>{
+    return (event: React.MouseEvent) => {
+    const numberOfQinQuiz=numberOfQuizSelected;
+    console.log(numberOfQinQuiz)
+    }
+  }
+  const handlerTheme=(numberOfQuizSelected: String)=>{
+    return (event: React.MouseEvent) => {
+    const numberOfQinQuiz=numberOfQuizSelected;
+    console.log(numberOfQinQuiz)
+    }
+  }
   
   return (
     <div>
@@ -39,21 +50,22 @@ const Dashboard = () => {
         <div className='technology'>
         <h2>Choose the theme of the quiz</h2>
           <div className='technology-options'>
-            <button className='button'>REACT</button>
-            <button className='button'>ANGULAR</button>
-            <button className='button'>VUE</button>
-            <button className='button'>JS</button>
+            <button className='button'onClick={handlerTheme("REACT")}>REACT</button>
+            <button className='button'onClick={handlerTheme("ANGULAR")}>ANGULAR</button>
+            <button className='button'onClick={handlerTheme("VUE")}>VUE</button>
+            <button className='button'onClick={handlerTheme("JS")}>JS</button>
           </div>
         </div>
         <div className='numberOfQuiz'></div>
 
         <h2>Choose the number of the quiz</h2>
           <div className='number-options'>
-            <button className='button'>5</button>
-            <button className='button'>10</button>
-            <button className='button'>15</button>
-            <button className='button'>20</button>
+            <button className='button' onClick={handlerQuestionNumber(5)}>5</button>
+            <button className='button'onClick={handlerQuestionNumber(10)}>10</button>
+            <button className='button'onClick={handlerQuestionNumber(15)}>15</button>
+            <button className='button'onClick={handlerQuestionNumber(20)}>20</button>
           </div>
+          
       </div>
 
       
