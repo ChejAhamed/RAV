@@ -38,30 +38,30 @@ const Dashboard = () => {
       {//render componet thta show score and give confety
        }
        {false ? (
-
+         
          <EndQuiz />
+
        ):
        <div className="dashboard">
       
-      <p className="score">Score:</p>
-      <p>Loading Questions...</p>
-        
-       <ul> DD:{ quizz?.map((quiz: any) => 
-         <div key={quiz?.question}>
-           <li>
-            Pregunta: {quiz?.question}
-           </li>
-           
-           {''}
-           <ul>{quiz?.answers?.map((answer: any) => 
-              <button type="button" key={answer?.text} onClick={() => handleAnswerButtonClick(answer?.isCorrect)}>
-                respuesta:{answer?.text}
-              </button>
+          <p className="score">Score:</p>
+          <p>Loading Questions...</p>
             
-              )}
-            </ul>
-            </div>)}
-        </ul> 
+          <ul> DD:{ quizz?.map((quiz: any) => 
+            <div key={quiz?.question}>
+              <li>
+                Pregunta: {quiz?.question}
+              </li>
+              {''}
+              <ul>{quiz?.answers?.map((answer: any) => 
+                  <button type="button" key={answer?.text} onClick={() => handleAnswerButtonClick(answer?.isCorrect)}>
+                    respuesta:{answer?.text}
+                  </button>
+                
+                  )}
+                </ul>
+                </div>)}
+            </ul> 
         </div>
         }
         
