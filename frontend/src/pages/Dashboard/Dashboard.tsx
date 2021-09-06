@@ -7,18 +7,10 @@ import QuestionCard from '../QuestionCard/QuestionCard';
 import { Difficulty } from '../../API';
 
 const TOTAL_QUESTIONS=10;
- /*let quizz = [
-    {
-      question: 'pregunta1',
-      alternative: [{text: 'r1'}, {text: 'r2'}, {text: 'r3'}],
-    },
-    {
-      question: 'pregunta1',
-      alternative: [{text: 'r1'}, {text: 'r2'}, {text: 'r3'}],
-    },
-  ];*/
+
 const Dashboard = () => {
 
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
@@ -45,9 +37,9 @@ const Dashboard = () => {
            
            {''}
            <ul>{quiz.answers?.map((answer: any) => 
-              <li key={answer?.text}>
+              <button type="button" key={answer?.text}>
                 respuesta:{answer?.text}
-              </li>
+              </button>
             
               )}
             </ul>
