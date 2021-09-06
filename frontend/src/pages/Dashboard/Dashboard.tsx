@@ -27,26 +27,19 @@ const Dashboard = () => {
     dispatch(loadAllQuiz());
   },[]);
   
-  const startQuiz = async () => {
-
-  };
-  const checkAnswer = (event:React.MouseEvent<HTMLButtonElement>) => {
-
-  };
-  const nextQuestion = () => {
-
-  };
+  
+  
   return (
     <div>
       
       <h1>DASHBOARD</h1>
-      <button className="start" onClick={startQuiz}> </button>
+      
       <p className="score">Score:</p>
       <p>Loading Questions...</p>
         
        <ul> DD:{ quizz?.map((quiz: any) => 
          <>
-           <li key={quiz.description}>
+           <li key={quiz?.description}>
             Pregunta: {quiz?.description}
            </li>
            {console.log(quiz?.description)}
@@ -65,16 +58,7 @@ const Dashboard = () => {
       
 
 
-      {/*<QuestionCard
-      questionNumber={number+1}
-      totalQuestions={TOTAL_QUESTIONS}
-      question={questions[number].question} 
-      answers={questions[number].answers}
-      userAnswer={userAnswers ? userAnswers[number]:undefined}
-      callback={checkAnswer}
-
-      />*/}
-      <button className="next" onClick={nextQuestion}>Next Question</button>
+      
 
     </div>
   );
