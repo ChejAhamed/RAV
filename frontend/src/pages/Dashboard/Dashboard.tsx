@@ -35,6 +35,28 @@ const Dashboard = () => {
   
   return (
     <div>
+      <div className='quizFilter'>
+        <div className='technology'>
+        <h2>Choose the theme of the quiz</h2>
+          <div className='technology-options'>
+            <button className='button'>REACT</button>
+            <button className='button'>ANGULAR</button>
+            <button className='button'>VUE</button>
+            <button className='button'>JS</button>
+          </div>
+        </div>
+        <div className='numberOfQuiz'></div>
+
+        <h2>Choose the number of the quiz</h2>
+          <div className='number-options'>
+            <button className='button'>5</button>
+            <button className='button'>10</button>
+            <button className='button'>15</button>
+            <button className='button'>20</button>
+          </div>
+      </div>
+
+      
       {//render componet thta show score and give confety
        }
        {false ? (
@@ -42,7 +64,8 @@ const Dashboard = () => {
          <EndQuiz />
 
        ):
-       <div className="dashboard">
+
+       <div className="Questions">
       
           <p className="score">Score:</p>
           <p>Loading Questions...</p>
