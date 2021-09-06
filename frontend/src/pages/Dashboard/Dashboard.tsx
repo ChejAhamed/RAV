@@ -9,11 +9,11 @@ import { Difficulty } from '../../API';
 const TOTAL_QUESTIONS=10;
  /*let quizz = [
     {
-      description: 'pregunta1',
+      question: 'pregunta1',
       alternative: [{text: 'r1'}, {text: 'r2'}, {text: 'r3'}],
     },
     {
-      description: 'pregunta1',
+      question: 'pregunta1',
       alternative: [{text: 'r1'}, {text: 'r2'}, {text: 'r3'}],
     },
   ];*/
@@ -38,15 +38,15 @@ const Dashboard = () => {
       <p>Loading Questions...</p>
         
        <ul> DD:{ quizz?.map((quiz: any) => 
-         <div key={quiz?.description}>
+         <div key={quiz?.question}>
            <li>
-            Pregunta: {quiz?.description}
+            Pregunta: {quiz?.question}
            </li>
            
            {''}
-           <ul>{quiz.alternatives?.map((alternative: any) => 
-              <li key={alternative?.text}>
-                respuesta:{alternative?.text}
+           <ul>{quiz.answers?.map((answer: any) => 
+              <li key={answer?.text}>
+                respuesta:{answer?.text}
               </li>
             
               )}
