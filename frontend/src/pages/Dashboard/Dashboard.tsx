@@ -5,6 +5,7 @@ import { loadAllQuiz } from '../../redux/actions/actionCreator';
 import QuestionCard from '../QuestionCard/QuestionCard';
 
 import { Difficulty } from '../../API';
+import EndQuiz from '../EndQuiz/EndQuiz';
 
 const TOTAL_QUESTIONS=10;
 
@@ -34,8 +35,13 @@ const Dashboard = () => {
   
   return (
     <div>
-      
-      <h1>DASHBOARD</h1>
+      {//render componet thta show score and give confety
+       }
+       {false ? (
+
+         <EndQuiz />
+       ):
+       <div className="dashboard">
       
       <p className="score">Score:</p>
       <p>Loading Questions...</p>
@@ -56,6 +62,8 @@ const Dashboard = () => {
             </ul>
             </div>)}
         </ul> 
+        </div>
+        }
         
     </div>
   );
