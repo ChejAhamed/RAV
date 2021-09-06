@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const quizSchema = mongoose.Schema({
-  description: String,
+  question: String,
   category: String,
-  alternatives: [
+  answers: [
     {
       text: {
         type: String,
@@ -11,7 +11,6 @@ const quizSchema = mongoose.Schema({
       },
       isCorrect: {
         type: Boolean,
-        required: true,
         default: false
       }
     }
