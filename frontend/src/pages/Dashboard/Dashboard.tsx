@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 
-const TOTAL_QUESTIONS=10;
+
 
 const Dashboard = () => {
 
   
-  //-----------DASHBOARD
   let numberOfQinQuiz= 0;
   let  choosenTheme="";
 
@@ -92,8 +91,11 @@ const Dashboard = () => {
           
           </div>
           <div className='reset'>
-            <button className='button'  onClick={handlerResetOptions(numberOfQinQuiz ,choosenTheme)}>Reset Choice</button>
-          
+
+            <Link to="/startquiz"> 
+                <button className='button'  onClick={handlerResetOptions(numberOfQinQuiz ,choosenTheme)}>Reset Choice</button>
+            </Link> 
+
           </div>
           
         </div>

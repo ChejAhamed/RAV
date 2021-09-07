@@ -7,7 +7,9 @@ import Profile from './pages/Profile/Profile';
 import NotFound from './pages/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
 import Statistics from './pages/Statistics/Statiscs';
+import StartQuiz from './pages/StartQuiz/StartQuiz';
 import configureStore from './redux/store';
+import EndQuiz from './pages/EndQuiz/EndQuiz';
 function App() {
   return (
     <Provider store={configureStore()}>
@@ -19,6 +21,8 @@ function App() {
           <Redirect path='/dashboard' to='/'/>
           <Route path="/profile" component={Profile} />
           <Route path="/statistics" component={Statistics} />
+          <Route path="/startquiz" component={StartQuiz} />
+          <Route path="/endquiz" component={EndQuiz} />
           <Route component={NotFound} />
         </Switch>
     </BrowserRouter>

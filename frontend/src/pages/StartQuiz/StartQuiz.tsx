@@ -35,7 +35,7 @@ const StartQuiz:React.FC =()=>{
     <div>
          {//render componet thta show score and give confety
        }
-       {false ? (
+       {true ? (
          
          <EndQuiz />
 
