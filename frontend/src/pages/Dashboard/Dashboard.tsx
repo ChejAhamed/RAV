@@ -13,7 +13,10 @@ const Dashboard = () => {
   function ActivingQuiz():any {
     dispatch(checkActiveQuiz(activeQuiz))
   }
-
+  const [activeQuiz,setActiveQuiz]=useState({
+    choosenTheme:"",
+    numberOfQinQuiz:0
+    })
   const [disableSubmitNumberButton, setDisableSubmitNumberButton] = useState(false);
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = useState(false);
   const [disableSubmitButton, setDisableSubmitButton] = useState(true);
@@ -21,9 +24,9 @@ const Dashboard = () => {
   
   const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {
-      console.log(activeQuiz)
+      
        activeQuiz.choosenTheme=themeSelected;
-      console.log(activeQuiz.choosenTheme)
+  
       setDisableSubmitThemeButton(true)
       
       
@@ -35,20 +38,16 @@ const Dashboard = () => {
       
       return (event: React.MouseEvent) => {
         activeQuiz.numberOfQinQuiz=numberOfQuizSelected;
-        console.log(activeQuiz.numberOfQinQuiz)
+        
         setActiveQuiz
         setDisableSubmitNumberButton(true)
         
         
-        console.log(activeQuiz.numberOfQinQuiz);
         }
 
       }
-      const [activeQuiz,setActiveQuiz]=useState({
-       choosenTheme:"",
-       numberOfQinQuiz:0
-       })
-        useEffect(() => {
+      
+      useEffect(() => {
           if (disableSubmitNumberButton && disableSubmitThemeButton)  {
             setDisableSubmitButton(false)}
           
@@ -61,19 +60,16 @@ const Dashboard = () => {
       console.log("no theme");
     }
     ActivingQuiz()
-    console.log(activeQuiz.choosenTheme);
-    console.log(activeQuiz.numberOfQinQuiz);
+    
     }
   
   }
-  console.log(activeQuiz)
+  
   const handlerResetOptions=(numberOfQinQuiz:number, choosenTheme:string)=>{
     return (event: React.MouseEvent) => {
     if (disableSubmitNumberButton || disableSubmitThemeButton === true){
       numberOfQinQuiz= 0;
       choosenTheme="";
-      console.log(numberOfQinQuiz);
-      console.log(choosenTheme)
       alert('Please choose wisely!')
     }
     }

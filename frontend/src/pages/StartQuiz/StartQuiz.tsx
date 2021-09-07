@@ -12,14 +12,15 @@ import Dashboard from '../Dashboard/Dashboard';
 
 const StartQuiz:React.FC =()=>{
   const activeQuiz = useSelector((store:any) => store.activeQuiz);
-  console.log(activeQuiz.numberOfQinQuiz)
-  console.log(activeQuiz.choosenTheme);
+  const quizz= useSelector((store:any)=>store.quiz)
+  const dispatch = useDispatch();
   console.log(activeQuiz);
+
+
     const [question, setNextQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false)
   
-    const quizz= useSelector((store:any)=>store.quiz)
-    const dispatch = useDispatch();
+   
 
 
     const handleAnswerButtonClick = (answers:any) => {
