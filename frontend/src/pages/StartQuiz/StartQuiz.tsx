@@ -1,42 +1,38 @@
 
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { Link } from 'react-router-dom';
 import { loadAllQuiz } from '../../redux/actions/actionCreator';
-import numberOfQinQuiz  from '../Dashboard/Dashboard'
-
-import { Difficulty } from '../../API';
 import EndQuiz from '../EndQuiz/EndQuiz';
-import Dashboard from '../Dashboard/Dashboard';
+
 
 
 const StartQuiz:React.FC =()=>{
-  const activeQuiz = useSelector((store:any) => store.activeQuiz);
+  const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
-  console.log(activeQuiz);
-
-
-    const [question, setNextQuestion] = useState(0);
-    const [showScore, setShowScore] = useState(false)
   
-   
+  const [currentQuiz, setCurrentQuiz]=useState("");
+  console.log(numberOfQinQuiz)
+  console.log(choosenTheme)
 
 
-    const handleAnswerButtonClick = (answers:any) => {
-    const nextQuestion = question + 1;
-    setNextQuestion(nextQuestion);
-    if (nextQuestion < quizz.question.length) {
-      setNextQuestion(nextQuestion);
-      console.log(quizz.question.length)
-    } else {
-      setShowScore(true);;
-    }
-  };
 
   useEffect(() => {
     dispatch(loadAllQuiz());
+
   },[]);
+
+  
+    const newQuiz= quizz.filter(({category}: any)=>
+    category===choosenTheme
+    );   
+
+  //setCurrentQuiz(quizFilter)
+  console.log('puta',newQuiz);
+  
+  const handleAnswerButtonClick=()=>{
+      ///check if answer is correct
+  }
     return(
     <div>
       
@@ -57,7 +53,10 @@ const StartQuiz:React.FC =()=>{
              
           </div>
           <p className="score">Score:</p>
+          <p>FILTERED</p>
+
           <p>Loading Questions...</p>
+          <ul>S: </ul>
             
           <ul> DD:{ quizz?.map((quiz: any) => 
             <div key={quiz?.question}>
@@ -66,7 +65,7 @@ const StartQuiz:React.FC =()=>{
               </li>
               {''}
               <ul>{quiz?.answers?.map((answer: any) => 
-                  <button type="button" key={answer?.text} onClick={() => handleAnswerButtonClick(answer?.isCorrect)}>
+                  <button type="button" key={answer?.text} onClick={() => handleAnswerButtonClick(/*answer?.isCorrect*/)}>
                     respuesta:{answer?.text}
                   </button>
                 
