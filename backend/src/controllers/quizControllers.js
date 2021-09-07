@@ -10,11 +10,13 @@ async function getAll({ query }, res) {
     res.send(error);
   }
 }
-async function createOne({ description, alternatives }, res) {
+async function createOne(req, res) {
+  const { question, category, answers } = req.body;
   try {
     const createdQuiz = await Quiz.create({
-      description,
-      alternatives
+      question,
+      category,
+      answers
     });
 
     res.json(createdQuiz);
@@ -35,11 +37,11 @@ async function getOne(req, res) {
 }
 async function updateOneQuiz(req, res) {
   const _id = req.params.id;
-  const { description, alternatives } = req.body;
+  const { question, category, answers } = req.body;
   try {
     const userUpdated = await Quiz.findByIdAndUpdate(
       _id,
-      { description, alternatives },
+      { question, category, answers },
       {
         new: true,
         useFindAndModify: false

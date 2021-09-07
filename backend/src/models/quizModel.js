@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const quizSchema = mongoose.Schema({
-  description: String,
-  alternatives: [
+  question: String,
+  category: String,
+  answers: [
     {
       text: {
         type: String,
