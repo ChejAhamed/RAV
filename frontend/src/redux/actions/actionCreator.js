@@ -18,3 +18,18 @@ export function loadAllQuiz() {
     
   };
 }
+
+export function activeQuiz() {
+return dispatch=>{
+  try {
+    dispatch({
+      type:actionTypes.ACTIVE_QUIZ,
+      data
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
+}
