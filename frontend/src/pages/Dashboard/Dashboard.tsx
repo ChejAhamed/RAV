@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-
+import { useSelector , useDispatch} from 'react-redux';
+import StartQuiz from '../StartQuiz/StartQuiz';
 import { Link } from 'react-router-dom';
 
 
 
 const Dashboard = () => {
-
+  const cart = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
+  function handlePay() {
+    dispatch(payProducts(cart));
   
   let numberOfQinQuiz= 0;
   let  choosenTheme="";
@@ -62,7 +66,8 @@ const Dashboard = () => {
   return (
     
     <div>
-     
+       
+
       <div className='quizFilter'>
         <div className='technology'>
         <h2>Choose the theme of the quiz</h2>
