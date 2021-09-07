@@ -11,7 +11,7 @@ const StartQuiz:React.FC =()=>{
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
   
-  const [currentQuiz, setCurrentQuiz]=useState("");
+  
   console.log(numberOfQinQuiz)
   console.log(choosenTheme)
 
@@ -23,12 +23,12 @@ const StartQuiz:React.FC =()=>{
   },[]);
 
   
-    const newQuiz= quizz.filter(({category}: any)=>
+    const filteredQuiz= quizz.filter(({category}: any)=>
     category===choosenTheme
     );   
 
   //setCurrentQuiz(quizFilter)
-  console.log('puta',newQuiz);
+  console.log('filtradoo',filteredQuiz);
   
   const handleAnswerButtonClick=()=>{
       ///check if answer is correct
@@ -56,9 +56,9 @@ const StartQuiz:React.FC =()=>{
           <p>FILTERED</p>
 
           <p>Loading Questions...</p>
-          <ul>S: </ul>
+         
             
-          <ul> DD:{ quizz?.map((quiz: any) => 
+          <ul> DD:{ filteredQuiz?.map((quiz: any) => 
             <div key={quiz?.question}>
               <li>
                 Pregunta: {quiz?.question}
@@ -78,4 +78,4 @@ const StartQuiz:React.FC =()=>{
     </div>
     )
 }
-export default StartQuiz
+export default StartQuiz;
