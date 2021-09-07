@@ -8,10 +8,7 @@ import {checkActiveQuiz } from '../../redux/actions/actionCreator'
 
 const Dashboard = () => {
   
-  let activeQuiz={
-    numberOfQinQuiz: 0,
-    choosenTheme:"",
-  }
+ 
   const dispatch= useDispatch();
   function ActivingQuiz():any {
     dispatch(checkActiveQuiz(activeQuiz))
@@ -19,10 +16,12 @@ const Dashboard = () => {
 
   const [disableSubmitNumberButton, setDisableSubmitNumberButton] = useState(false);
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = useState(false);
-  
   const [disableSubmitButton, setDisableSubmitButton] = useState(true);
+
+  
   const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {
+      console.log(activeQuiz)
        activeQuiz.choosenTheme=themeSelected;
       console.log(activeQuiz.choosenTheme)
       setDisableSubmitThemeButton(true)
@@ -31,18 +30,24 @@ const Dashboard = () => {
       }
       
     }
-    console.log(activeQuiz.choosenTheme);
-    console.log(activeQuiz.numberOfQinQuiz);
+   
     const handlerQuestionNumber=(numberOfQuizSelected: number)=>{
+      
       return (event: React.MouseEvent) => {
         activeQuiz.numberOfQinQuiz=numberOfQuizSelected;
         console.log(activeQuiz.numberOfQinQuiz)
+        setActiveQuiz
         setDisableSubmitNumberButton(true)
-        console.log(activeQuiz)
-          
+        
+        
+        console.log(activeQuiz.numberOfQinQuiz);
         }
+
       }
-      
+      const [activeQuiz,setActiveQuiz]=useState({
+       choosenTheme:"",
+       numberOfQinQuiz:0
+       })
         useEffect(() => {
           if (disableSubmitNumberButton && disableSubmitThemeButton)  {
             setDisableSubmitButton(false)}
@@ -61,7 +66,7 @@ const Dashboard = () => {
     }
   
   }
-  
+  console.log(activeQuiz)
   const handlerResetOptions=(numberOfQinQuiz:number, choosenTheme:string)=>{
     return (event: React.MouseEvent) => {
     if (disableSubmitNumberButton || disableSubmitThemeButton === true){
@@ -73,6 +78,7 @@ const Dashboard = () => {
     }
     }
   }
+
   return (
     
     <div>
@@ -103,7 +109,7 @@ const Dashboard = () => {
         <h2>Ready?</h2>
           <div className='submit'>
           <Link to="/startquiz"> 
-            <button type='button' disabled={disableSubmitButton} onClick={handlerSubmit(handlerQuestionNumber,handlerTheme)}>Start Quiz</button>
+            <button type='button' disabled={disableSubmitButton} onClick={handlerSubmit(activeQuiz.numberOfQinQuiz ,activeQuiz.choosenTheme)}>Start Quiz</button>
          </Link> 
           </div>
           <div className='reset'>
