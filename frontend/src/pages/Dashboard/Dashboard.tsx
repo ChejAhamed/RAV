@@ -31,22 +31,25 @@ const Dashboard = () => {
     dispatch(loadAllQuiz());
   },[]);
   //-----------DASHBOARD
+  let numberOfQinQuiz= 0;
+  let  choosenTheme="";
+
   const [disableSubmitNumberButton, setDisableSubmitNumberButton] = useState(false);
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = useState(false);
   
   const [disableSubmitButton, setDisableSubmitButton] = useState(true);
-  const handlerTheme=(themeSelected: String)=>{
+  const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {
-      const choosenTheme=themeSelected;
+       choosenTheme=themeSelected;
       console.log(choosenTheme)
       setDisableSubmitThemeButton(true)
       
       }
       
     }
-    const handlerQuestionNumber=(numberOfQuizSelected: Number)=>{
+    const handlerQuestionNumber=(numberOfQuizSelected: number)=>{
       return (event: React.MouseEvent) => {
-        const numberOfQinQuiz=numberOfQuizSelected;
+         numberOfQinQuiz=numberOfQuizSelected;
         console.log(numberOfQinQuiz)
         setDisableSubmitNumberButton(true)
         
@@ -57,11 +60,12 @@ const Dashboard = () => {
         useEffect(() => {
           if (disableSubmitNumberButton && disableSubmitThemeButton)  {
             setDisableSubmitButton(false)}
+          
         });
   const handlerSubmit=(themeSelected: any, numberOfQuizSelected: any)=>{
     return (event: React.MouseEvent) => {
-    const quizTheme=themeSelected;
-    const quizNumber=numberOfQuizSelected;
+    let quizTheme=themeSelected;
+    let quizNumber=numberOfQuizSelected;
     /*if (quizTheme && quizNumber){
 
       //render StartQuiz
@@ -74,10 +78,14 @@ const Dashboard = () => {
     }
   
   }
-  const handlerResetOptions=()=>{
+  const handlerResetOptions=(numberOfQinQuiz:number, choosenTheme:string)=>{
     return (event: React.MouseEvent) => {
-    if (disableSubmitButton===false){
-      setDisableSubmitButton(true)
+    if (disableSubmitNumberButton || disableSubmitThemeButton === true){
+      numberOfQinQuiz= 0;
+      choosenTheme="";
+      console.log(numberOfQinQuiz);
+      console.log(choosenTheme)
+      alert('Please choose wisely!')
     }
     }
   }
@@ -113,7 +121,7 @@ const Dashboard = () => {
           
           </div>
           <div className='reset'>
-            <button className='button'  onClick={handlerResetOptions()}>Reset Choice</button>
+            <button className='button'  onClick={handlerResetOptions(numberOfQinQuiz ,choosenTheme)}>Reset Choice</button>
           
           </div>
           
