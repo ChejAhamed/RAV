@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom';
 import { loadAllQuiz } from '../../redux/actions/actionCreator';
-
 import numberOfQinQuiz  from '../Dashboard/Dashboard'
 
 import { Difficulty } from '../../API';
@@ -12,21 +11,17 @@ import Dashboard from '../Dashboard/Dashboard';
 
 
 const StartQuiz:React.FC =()=>{
-    console.log(numberOfQinQuiz)
-    
-  const logger=()=>{
-    return (event: React.MouseEvent) => {
-     
-    console.log(numberOfQinQuiz)}
-     
-       
-     }
-    
+  const activeQuiz = useSelector((store:any) => store.activeQuiz);
+  console.log(activeQuiz.numberOfQinQuiz)
+  console.log(activeQuiz.choosenTheme);
+  console.log(activeQuiz);
     const [question, setNextQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false)
   
     const quizz= useSelector((store:any)=>store.quiz)
     const dispatch = useDispatch();
+
+
     const handleAnswerButtonClick = (answers:any) => {
     const nextQuestion = question + 1;
     setNextQuestion(nextQuestion);
@@ -57,7 +52,7 @@ const StartQuiz:React.FC =()=>{
 
        <div className="Questions">
            <div>
-             <button type="button" onClick={logger()}>Logger</button>
+             <button type="button" >Logger</button>
              
           </div>
           <p className="score">Score:</p>

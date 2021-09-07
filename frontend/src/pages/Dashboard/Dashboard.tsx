@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useSelector , useDispatch} from 'react-redux';
 import StartQuiz from '../StartQuiz/StartQuiz';
 import { Link } from 'react-router-dom';
+import {checkActiveQuiz } from '../../redux/actions/actionCreator'
 
 
 
 const Dashboard = () => {
-  const cart = useSelector((store) => store.cart);
-  const dispatch = useDispatch();
-  function handlePay() {
-    dispatch(payProducts(cart));
   
-  let numberOfQinQuiz= 0;
-  let  choosenTheme="";
+  let activeQuiz={
+    numberOfQinQuiz: 0,
+    choosenTheme:"",
+  }
+  const dispatch= useDispatch();
+  function ActivingQuiz():any {
+    dispatch(checkActiveQuiz(activeQuiz))
+  }
 
   const [disableSubmitNumberButton, setDisableSubmitNumberButton] = useState(false);
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = useState(false);
@@ -20,19 +23,22 @@ const Dashboard = () => {
   const [disableSubmitButton, setDisableSubmitButton] = useState(true);
   const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {
-       choosenTheme=themeSelected;
-      console.log(choosenTheme)
+       activeQuiz.choosenTheme=themeSelected;
+      console.log(activeQuiz.choosenTheme)
       setDisableSubmitThemeButton(true)
+      
       
       }
       
     }
+    console.log(activeQuiz.choosenTheme);
+    console.log(activeQuiz.numberOfQinQuiz);
     const handlerQuestionNumber=(numberOfQuizSelected: number)=>{
       return (event: React.MouseEvent) => {
-         numberOfQinQuiz=numberOfQuizSelected;
-        console.log(numberOfQinQuiz)
+        activeQuiz.numberOfQinQuiz=numberOfQuizSelected;
+        console.log(activeQuiz.numberOfQinQuiz)
         setDisableSubmitNumberButton(true)
-        
+        console.log(activeQuiz)
           
         }
       }
@@ -44,14 +50,18 @@ const Dashboard = () => {
         });
   const handlerSubmit=(themeSelected: any, numberOfQuizSelected: any)=>{
     return (event: React.MouseEvent) => {
-    let quizTheme=themeSelected;
-    let quizNumber=numberOfQuizSelected;
-    
-    console.log(quizTheme);
-    console.log(quizNumber);
+      activeQuiz.choosenTheme=themeSelected;
+      activeQuiz.numberOfQinQuiz=numberOfQuizSelected;
+    if(activeQuiz.choosenTheme!==""){
+      console.log("no theme");
+    }
+    ActivingQuiz()
+    console.log(activeQuiz.choosenTheme);
+    console.log(activeQuiz.numberOfQinQuiz);
     }
   
   }
+  
   const handlerResetOptions=(numberOfQinQuiz:number, choosenTheme:string)=>{
     return (event: React.MouseEvent) => {
     if (disableSubmitNumberButton || disableSubmitThemeButton === true){
@@ -99,7 +109,7 @@ const Dashboard = () => {
           <div className='reset'>
 
             
-                <button type='button'  onClick={handlerResetOptions(numberOfQinQuiz ,choosenTheme)}>Reset Choice</button>
+                <button type='button'  onClick={handlerResetOptions(activeQuiz.numberOfQinQuiz ,activeQuiz.choosenTheme)}>Reset Choice</button>
             
 
           </div>

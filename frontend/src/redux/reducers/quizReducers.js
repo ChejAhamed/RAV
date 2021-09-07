@@ -12,4 +12,3 @@ export default function quizReducer(quiz = [], action) {
   return nextQuiz;
 }
 
-export default function activeQuizReducer(numberOfQinQuiz=!"")
