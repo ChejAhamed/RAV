@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import actionTypes from './actionTypes';
 
 export function loadAllQuiz() {
@@ -17,4 +18,19 @@ export function loadAllQuiz() {
     }
     
   };
+}
+
+export function checkActiveQuiz(data) {
+return dispatch=>{
+  try {
+    dispatch({
+      type: actionTypes.ACTIVE_QUIZ,
+      data
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
 }

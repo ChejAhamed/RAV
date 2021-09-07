@@ -3,20 +3,26 @@ import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom';
 import { loadAllQuiz } from '../../redux/actions/actionCreator';
-import QuestionCard from '../QuestionCard/QuestionCard';
+import numberOfQinQuiz  from '../Dashboard/Dashboard'
 
 import { Difficulty } from '../../API';
 import EndQuiz from '../EndQuiz/EndQuiz';
+import Dashboard from '../Dashboard/Dashboard';
 
 
 const StartQuiz:React.FC =()=>{
-    
+  const activeQuiz = useSelector((store:any) => store.activeQuiz);
+  const quizz= useSelector((store:any)=>store.quiz)
+  const dispatch = useDispatch();
+  console.log(activeQuiz);
+
 
     const [question, setNextQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false)
   
-    const quizz= useSelector((store:any)=>store.quiz)
-    const dispatch = useDispatch();
+   
+
+
     const handleAnswerButtonClick = (answers:any) => {
     const nextQuestion = question + 1;
     setNextQuestion(nextQuestion);
@@ -33,16 +39,23 @@ const StartQuiz:React.FC =()=>{
   },[]);
     return(
     <div>
+      
+
+
+
          {//render componet thta show score and give confety
        }
-       {true ? (
+       {false ? (
          
          <EndQuiz />
-
+        
        ):
 
        <div className="Questions">
-      
+           <div>
+             <button type="button" >Logger</button>
+             
+          </div>
           <p className="score">Score:</p>
           <p>Loading Questions...</p>
             

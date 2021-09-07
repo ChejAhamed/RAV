@@ -11,3 +11,4 @@ export default function quizReducer(quiz = [], action) {
   }
   return nextQuiz;
 }
+
