@@ -87,14 +87,15 @@ const Dashboard = () => {
         <div>
         <h2>Ready?</h2>
           <div className='submit'>
-            <button className='button' disabled={disableSubmitButton} onClick={handlerSubmit(handlerQuestionNumber,handlerTheme)}>Start Quiz</button>
-          
+          <Link to="/startquiz"> 
+            <button type='button' disabled={disableSubmitButton} onClick={handlerSubmit(handlerQuestionNumber,handlerTheme)}>Start Quiz</button>
+         </Link> 
           </div>
           <div className='reset'>
 
-            <Link to="/startquiz"> 
-                <button className='button'  onClick={handlerResetOptions(numberOfQinQuiz ,choosenTheme)}>Reset Choice</button>
-            </Link> 
+            
+                <button type='button'  onClick={handlerResetOptions(numberOfQinQuiz ,choosenTheme)}>Reset Choice</button>
+            
 
           </div>
           
