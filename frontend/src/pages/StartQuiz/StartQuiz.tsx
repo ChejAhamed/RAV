@@ -21,6 +21,7 @@ const StartQuiz:React.FC =()=>{
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0)
   const [showScore, setShowScore] = React.useState(false);
+  const [totalScore, setTotalScore] = React.useState(0)
   
   
   

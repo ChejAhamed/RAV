@@ -47,3 +47,16 @@ export function addScoreQuiz(data){
     }
   }
 }
+export function totalScore(data){
+  return dispatch=>{
+    try {
+      dispatch({
+        type: actionTypes.TOTAL_SCORE,
+        data
+      })
+
+    } catch(error){
+      console.log(error)
+    }
+  }
+}
