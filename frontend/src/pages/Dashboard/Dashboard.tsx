@@ -14,12 +14,13 @@ const Dashboard = () => {
     dispatch(checkActiveQuiz(activeQuiz))
   }
   const [activeQuiz,setActiveQuiz]=useState({
-    choosenTheme:"",
-    numberOfQinQuiz:0
+    numberOfQinQuiz:0,
+    choosenTheme:""
+    
     })
-  const [disableSubmitNumberButton, setDisableSubmitNumberButton] = useState(false);
-  const [disableSubmitThemeButton, setDisableSubmitThemeButton] = useState(false);
-  const [disableSubmitButton, setDisableSubmitButton] = useState(true);
+  const [disableSubmitNumberButton, setDisableSubmitNumberButton] = React.useState(false);
+  const [disableSubmitThemeButton, setDisableSubmitThemeButton] = React.useState(false);
+  const [disableSubmitButton, setDisableSubmitButton] = React.useState(true);
 
   
   const handlerTheme=(themeSelected: string)=>{
@@ -52,13 +53,11 @@ const Dashboard = () => {
             setDisableSubmitButton(false)}
           
         });
-  const handlerSubmit=(themeSelected: any, numberOfQuizSelected: any)=>{
+  const handlerSubmit=( numberOfQuizSelected: any,themeSelected: any)=>{
     return (event: React.MouseEvent) => {
       activeQuiz.choosenTheme=themeSelected;
       activeQuiz.numberOfQinQuiz=numberOfQuizSelected;
-    if(activeQuiz.choosenTheme!==""){
-      console.log("no theme");
-    }
+  
     ActivingQuiz()
     
     }

@@ -1,82 +1,108 @@
 
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { Link } from 'react-router-dom';
 import { loadAllQuiz } from '../../redux/actions/actionCreator';
-import numberOfQinQuiz  from '../Dashboard/Dashboard'
+import scoreQuiz from '../../redux/reducers/addScoreQuizReducer';
+import actionTypes from '../../redux/actions/actionTypes';
 
-import { Difficulty } from '../../API';
-import EndQuiz from '../EndQuiz/EndQuiz';
-import Dashboard from '../Dashboard/Dashboard';
-
+interface Score{
+  score:number
+}
 
 const StartQuiz:React.FC =()=>{
-  const activeQuiz = useSelector((store:any) => store.activeQuiz);
+  const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
-  console.log(activeQuiz);
 
-
-    const [question, setNextQuestion] = useState(0);
-    const [showScore, setShowScore] = useState(false)
+  /*function updatingScore():any {
+    dispatch(scoreQuiz(score))
+  }
+ */
+  const [currentQuestion, setCurrentQuestion] = React.useState(0);
+  const [score, setScore] = React.useState(0)
+  const [showScore, setShowScore] = React.useState(false);
+  const [totalScore, setTotalScore] = React.useState(0)
   
-   
-
-
-    const handleAnswerButtonClick = (answers:any) => {
-    const nextQuestion = question + 1;
-    setNextQuestion(nextQuestion);
-    if (nextQuestion < quizz.question.length) {
-      setNextQuestion(nextQuestion);
-      console.log(quizz.question.length)
-    } else {
-      setShowScore(true);;
-    }
-  };
+  
+  
+ 
 
   useEffect(() => {
     dispatch(loadAllQuiz());
-  },[]);
-    return(
-    <div>
+
+    },[]);
+
+  
+    const filteredQuiz= quizz.filter(({category}: any)=>
+    category===choosenTheme );   
+
+  const quizSelected=filteredQuiz.slice(0,numberOfQinQuiz)
+  
+  
+
+  
+
+
+  const handleAnswerButton=(isCorrect:any)=>{
+    
+    if (isCorrect) {
       
+      setScore(score + 1);
+      dispatch({
+        type: actionTypes.SCORE_QUIZ,
+        data: score
+      })
+      
+		}
+
+    
+    const nextQuestion = currentQuestion + 1;
+		if (nextQuestion < quizSelected.length) {
+			setCurrentQuestion(nextQuestion);
+		} else {
+			setShowScore(true);
+		}
+  }
+  
+    return(
+    <div className="score">
+    <div className='app'>
+			{showScore ? (
+				<div className='score-section'>
+					You scored {score} out of {quizSelected?.length}
+				</div>
+			) : (
+				<>
+					<div className='question-section'>
+						<div className='question-count'>
+							<span>Question {currentQuestion + 1}</span>/{quizSelected?.length}
+						</div>
+						<div className='question-text'>{quizSelected[currentQuestion]?.question}</div>
+					</div>
+					<div className='answer-section'>
+						{quizSelected[currentQuestion]?.answers?.map((answer:any) => (
+							<button key={answer?._id} onClick={() => handleAnswerButton(answer?.isCorrect)} >{answer?.text + `${answer?.isCorrect}`}</button>
+						))}
+					</div>
+				</>
+			)}
+		</div>
 
 
 
-         {//render componet thta show score and give confety
-       }
-       {false ? (
-         
-         <EndQuiz />
-        
-       ):
 
-       <div className="Questions">
-           <div>
-             <button type="button" >Logger</button>
-             
-          </div>
-          <p className="score">Score:</p>
-          <p>Loading Questions...</p>
-            
-          <ul> DD:{ quizz?.map((quiz: any) => 
-            <div key={quiz?.question}>
-              <li>
-                Pregunta: {quiz?.question}
-              </li>
-              {''}
-              <ul>{quiz?.answers?.map((answer: any) => 
-                  <button type="button" key={answer?.text} onClick={() => handleAnswerButtonClick(answer?.isCorrect)}>
-                    respuesta:{answer?.text}
-                  </button>
-                
-                  )}
-                </ul>
-                </div>)}
-            </ul> 
-        </div>
-        }
+
+
+
+
+
+
+
+       
+
+
+
     </div>
     )
 }
-export default StartQuiz
+export default StartQuiz;
