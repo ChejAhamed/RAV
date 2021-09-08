@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import quiz from './quizReducers';
 import activeQuiz from './activeQuizReducer';
-import scoreQuiz from './addScoreQuiz';
+import scoreQuiz from './addScoreQuizReducer';
 
 export default combineReducers({
   quiz,

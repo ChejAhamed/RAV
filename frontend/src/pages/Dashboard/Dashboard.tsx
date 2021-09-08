@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = useState(false);
   const [disableSubmitButton, setDisableSubmitButton] = useState(true);
 
-  console.log(activeQuiz)
+  
   const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {
       

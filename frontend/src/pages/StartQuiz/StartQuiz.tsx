@@ -2,20 +2,29 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { loadAllQuiz } from '../../redux/actions/actionCreator';
-import EndQuiz from '../EndQuiz/EndQuiz';
+import scoreQuiz from '../../redux/reducers/addScoreQuizReducer';
+import actionTypes from '../../redux/actions/actionTypes';
 
-
+interface Score{
+  score:number
+}
 
 const StartQuiz:React.FC =()=>{
   const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
-  
+
+  /*function updatingScore():any {
+    dispatch(scoreQuiz(score))
+  }
+ */
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = React.useState(0)
   const [showScore, setShowScore] = useState(false);
   
-
+  
+  
+ 
 
  console.log(score)
   useEffect(() => {
@@ -37,10 +46,16 @@ const StartQuiz:React.FC =()=>{
 
   const handleAnswerButton=(isCorrect:any)=>{
     console.log('hola', isCorrect)
-    console.log(score)
     if (isCorrect) {
-			setScore(score + 1);
+      
+      setScore(score + 1);
+      dispatch({
+        type: actionTypes.SCORE_QUIZ,
+        data: score
+      })
+      
 		}
+
     
     const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < filteredQuiz.length) {
@@ -67,7 +82,7 @@ const StartQuiz:React.FC =()=>{
 					</div>
 					<div className='answer-section'>
 						{filteredQuiz[currentQuestion]?.answers?.map((answer:any) => (
-							<button key={answer?._id} onClick={() => handleAnswerButton(answer?.isCorrect)}>{answer?.text + `${answer?.isCorrect}`}</button>
+							<button key={answer?._id} onClick={() => handleAnswerButton(answer?.isCorrect)} >{answer?.text + `${answer?.isCorrect}`}</button>
 						))}
 					</div>
 				</>

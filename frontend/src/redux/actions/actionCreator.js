@@ -38,12 +38,12 @@ export function addScoreQuiz(data){
   return dispatch=>{
     try {
       dispatch({
-        type:actionTypes.SCORE_QUIZ,
+        type: actionTypes.SCORE_QUIZ,
         data
       })
 
     } catch(error){
-
+      console.log(error)
     }
   }
 }
