@@ -31,6 +31,18 @@ const StartQuiz:React.FC =()=>{
     dispatch(loadAllQuiz());
 
     },[]);
+    
+  useEffect(() => {
+    const result = totalScore + score;
+    setTotalScore(result)
+    console.log('h',result)
+    dispatch({
+      type: actionTypes.TOTAL_SCORE,
+      data: totalScore
+      
+    })
+
+    },[showScore]);
 
   
     const filteredQuiz= quizz.filter(({category}: any)=>
@@ -40,7 +52,7 @@ const StartQuiz:React.FC =()=>{
   
   
 
-  
+
 
 
   const handleAnswerButton=(isCorrect:any)=>{
@@ -52,16 +64,21 @@ const StartQuiz:React.FC =()=>{
         type: actionTypes.SCORE_QUIZ,
         data: score
       })
-      
-		}
-
     
-    const nextQuestion = currentQuestion + 1;
+		}
+    
+     const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < quizSelected.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
+      
 		}
+    
+    
+    console.log("score"+ score)
+      console.log("total "+totalScore)
+    
   }
   
     return(
@@ -70,6 +87,7 @@ const StartQuiz:React.FC =()=>{
 			{showScore ? (
 				<div className='score-section'>
 					You scored {score} out of {quizSelected?.length}
+          
 				</div>
 			) : (
 				<>

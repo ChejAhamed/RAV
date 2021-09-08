@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector , useDispatch} from 'react-redux';
-import StartQuiz from '../StartQuiz/StartQuiz';
 import { Link } from 'react-router-dom';
 import {checkActiveQuiz } from '../../redux/actions/actionCreator'
 
