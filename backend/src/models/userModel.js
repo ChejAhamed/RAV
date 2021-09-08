@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const isValidPassword = require('../functions/functions');
+const isValidPassword = require('../function/functions');
 
 const userSchema = mongoose.Schema({
   name: {
