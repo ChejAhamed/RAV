@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 const passport = require('passport');
 const { Router } = require('express');
-const authControllers = require('../controllers/authControllers')();
+const authControllers = require('../controllers/authController')();
 
 const authRoutes = Router();
 
