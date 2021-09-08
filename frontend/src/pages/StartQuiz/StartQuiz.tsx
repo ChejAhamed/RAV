@@ -18,34 +18,32 @@ const StartQuiz:React.FC =()=>{
     dispatch(scoreQuiz(score))
   }
  */
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0)
-  const [showScore, setShowScore] = useState(false);
+  const [showScore, setShowScore] = React.useState(false);
   
   
   
  
 
- console.log(score)
   useEffect(() => {
     dispatch(loadAllQuiz());
 
-  },[]);
+    },[]);
 
   
     const filteredQuiz= quizz.filter(({category}: any)=>
-    category===choosenTheme
-    );   
+    category===choosenTheme );   
 
-  //setCurrentQuiz(quizFilter)
-  console.log('filtradoo',filteredQuiz);
+  const quizSelected=filteredQuiz.slice(0,numberOfQinQuiz)
+  
   
 
   
 
 
   const handleAnswerButton=(isCorrect:any)=>{
-    console.log('hola', isCorrect)
+    
     if (isCorrect) {
       
       setScore(score + 1);
@@ -58,30 +56,30 @@ const StartQuiz:React.FC =()=>{
 
     
     const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < filteredQuiz.length) {
+		if (nextQuestion < quizSelected.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
 		}
   }
-  console.log(filteredQuiz)
+  
     return(
     <div className="score">
     <div className='app'>
 			{showScore ? (
 				<div className='score-section'>
-					You scored {score} out of {filteredQuiz?.length}
+					You scored {score} out of {quizSelected?.length}
 				</div>
 			) : (
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{filteredQuiz?.length}
+							<span>Question {currentQuestion + 1}</span>/{quizSelected?.length}
 						</div>
-						<div className='question-text'>{filteredQuiz[currentQuestion]?.question}</div>
+						<div className='question-text'>{quizSelected[currentQuestion]?.question}</div>
 					</div>
 					<div className='answer-section'>
-						{filteredQuiz[currentQuestion]?.answers?.map((answer:any) => (
+						{quizSelected[currentQuestion]?.answers?.map((answer:any) => (
 							<button key={answer?._id} onClick={() => handleAnswerButton(answer?.isCorrect)} >{answer?.text + `${answer?.isCorrect}`}</button>
 						))}
 					</div>
@@ -99,42 +97,10 @@ const StartQuiz:React.FC =()=>{
 
 
 
-       {
+       
 
-console.log(filteredQuiz[currentQuestion]?.question)}
-{console.log(filteredQuiz[currentQuestion]?.answers.text)}
 
-{
 
-       /*
-       <div className='app'>
-		
-		
-	
-          <p className="score">Score:</p>
-          <p>FILTERED</p>
-
-          <p>Loading Questions...</p>
-         
-            
-          <div> DD:{ filteredQuiz?.map((quiz: any) => 
-            <div key={quiz?.question}>
-              <h3>
-               {quiz?.question}
-              </h3>
-              {''}
-              <div>{quiz?.answers?.map((answer: any) => 
-                 <button type="button" key={answer?.text} onClick={() => handleAnswerButton(answer.isCorrect)}>
-                  {answer?.text}
-                  </button>
-                  
-                
-                  )}
-                </div>
-                </div>)}
-            </div> 
-        </div>*/
-        }
     </div>
     )
 }
