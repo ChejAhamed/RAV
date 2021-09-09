@@ -29,21 +29,19 @@ function App() {
   return (
     <Provider store={configureStore()}>
     <BrowserRouter>
-      <Header />
-        <Switch>
-          <Route path='/' exact component={LoginRegister}/>
-          <Redirect path='/login' to='/'/>
-          <Route path="/register" component={LoginRegister} />
+      <Route path='/' exact component={LoginRegister}/>
+        <Redirect path='/login' to='/'/>
+        <Header />
+         <Switch>
+           
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/profile" component={Profile} />
-
-          <Route path="/profile" component={Dashboard} />
           <Route path="/statistics" component={Statistics} />
           <Route path="/startquiz" component={StartQuiz} />
-        
           <Route component={NotFound} />
         </Switch>
+        <Footer />
     </BrowserRouter>
-    <Footer />
     </Provider>
   );
 }
