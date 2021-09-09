@@ -5,7 +5,7 @@ import {checkActiveQuiz } from '../../redux/actions/actionCreator'
 
 
 
-const Dashboard = () => {
+const Dashboard:React.FC =()=> {
   
  
   const dispatch= useDispatch();
