@@ -1,6 +1,8 @@
 
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch  } from "react-redux";
+import { Redirect } from "react-router";
+import { useHistory } from "react-router";
 import {
   BoldLink,
   BoxContainer,
@@ -12,27 +14,36 @@ import {
 import { Marginer } from "../Login&Auth/marginer";
 import { AccountContext } from "../Login&Auth/acountContext";
 import { login } from "../../redux/actions/actionCreator";
+
 export default function Login () {
+  let history= useHistory()
+  
   const { switchToSignup } = useContext(AccountContext);
-  //const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
- 
+  const isAuthenticated = useSelector(( {authUser} ) => authUser);
+
+  const users= useSelector((store)=>store.users)
+  console.log(isAuthenticated)
   const [loginData, setLoginData] = useState({
     email:"",
     password:""
     
   });
-
+  console.log("userLOGER", isAuthenticated.user)
+  
   const dispatch = useDispatch();
-
+  
   function handleLoginClick(event) {
     event.preventDefault();
+    console.log("gg",isAuthenticated.isAuthenticated)
     dispatch(login(loginData));
+    if (isAuthenticated) {
+      history.push('/dashboard')
+    }
+   
     
   }
 
- /* if (isAuthenticated) {
-    return <Redirect to="/" />;
-  }*/
+  
   return (
     <BoxContainer>
       <FormContainer>

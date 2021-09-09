@@ -7,7 +7,7 @@ import {checkActiveQuiz } from '../../redux/actions/actionCreator'
 
 const Dashboard:React.FC =()=> {
   
- 
+  
   const dispatch= useDispatch();
   function ActivingQuiz():any {
     dispatch(checkActiveQuiz(activeQuiz))

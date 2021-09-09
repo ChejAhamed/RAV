@@ -1,10 +1,8 @@
 import actionTypes from '../actions/actionTypes';
-const authInitialState={
-    isAuthenticated: false,
-  };
 
-export default function authReducer(
-  auth = authInitialState,
+
+export default function authUserReducer(
+  auth ={ authInitialState:false,user:{}},
   action,
 ) {
   let nextAuthState = auth;
@@ -24,6 +22,6 @@ export default function authReducer(
     default:
       break;
   }
-
+   console.log(nextAuthState)
   return nextAuthState;
 }
