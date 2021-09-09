@@ -1,8 +1,20 @@
 import React from 'react';
+import './App.css'
+import styled from "styled-components";
+import { AccountBox } from "../src/pages/Login&Auth/index";
+import LoginRegister from './pages/Login/LoginRegister';
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom'
 import { Provider } from 'react-redux';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
+
+
 import Dashboard from './pages/Dashboard/Dashboard'
 
 import Header from './components/Header/Header';
@@ -19,9 +31,9 @@ function App() {
     <BrowserRouter>
       <Header />
         <Switch>
-          <Route path='/' exact component={Login}/>
+          <Route path='/' exact component={LoginRegister}/>
           <Redirect path='/login' to='/'/>
-          <Route path="/register" component={Register} />
+          <Route path="/register" component={LoginRegister} />
           <Route path="/profile" component={Profile} />
 
           <Route path="/profile" component={Dashboard} />
