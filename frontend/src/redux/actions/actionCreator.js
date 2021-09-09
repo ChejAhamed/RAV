@@ -64,7 +64,7 @@ export function login(loginData) {
   console.log(loginData)
   return async (dispatch) => {
     try {
-      const { data } = await axios.post('/api/auth/login', { loginData });
+      const { data } = await axios.post('/api/auth/login', loginData );
       console.log(data)
       return dispatch({
         type: actionTypes.AUTH_LOGIN,
@@ -106,7 +106,7 @@ export function signup(signupData) {
   console.log(signupData)
   return async (dispatch) => {
     try {
-      const { data } = await axios.post('/api/auth/registe', { signupData });
+      const { data } = await axios.post('/api/auth/signup',  signupData );
       console.log(data)
       return dispatch({
         type: actionTypes.AUTH_SIGNUP,
@@ -116,6 +116,31 @@ export function signup(signupData) {
       if (error?.response?.status === 401) {
         return dispatch({
           type: actionTypes.AUTH_SIGNUP_ERROR,
+          message: error.message,
+        });
+      }
+
+      return dispatch({
+        type: actionTypes.ERROR_GENERIC,
+        message: error.message,
+      });
+    }
+  };
+}
+export function userLoged(loginData) {
+  console.log(loginData)
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/api/auth/login', loginData );
+      console.log(data)
+      return dispatch({
+        type: actionTypes.AUTH_LOGIN,
+        user: data,
+      });
+    } catch (error) {
+      if (error?.response?.status === 401) {
+        return dispatch({
+          type: actionTypes.AUTH_LOGIN_ERROR,
           message: error.message,
         });
       }
