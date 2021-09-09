@@ -60,10 +60,12 @@ export function totalScore(data){
     }
   }
 }
-export function login(name) {
+export function login(loginData) {
+  console.log(loginData)
   return async (dispatch) => {
     try {
-      const { data } = await axios.post('/api/login', { name });
+      const { data } = await axios.post('/api/auth/login', { loginData });
+      console.log(data)
       return dispatch({
         type: actionTypes.AUTH_LOGIN,
         user: data,

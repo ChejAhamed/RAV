@@ -12,11 +12,23 @@ import { AccountContext } from "../Login&Auth/acountContext";
 
 export function Register(props) {
   const { switchToSignin } = useContext(AccountContext);
+ /* const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
+  const [name, setName] = useState('');
 
+  const dispatch = useDispatch();
+
+  function handleLoginClick(event) {
+    event.preventDefault();
+    dispatch(login(name));
+  }
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }*/
   return (
     <BoxContainer>
       <FormContainer>
-        <Input type="text" placeholder="Full Name" />
+        <Input type="text"  placeholder="Full Name" />
         <Input type="email" placeholder="Email" />
         <Input type="password" placeholder="Password" />
         <Input type="password" placeholder="Confirm Password" />
