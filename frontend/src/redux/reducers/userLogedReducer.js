@@ -9,7 +9,7 @@ export default function userLogedReducer(user = [], action) {
       default:
         break;
     }
-    return nextUsersState ;
+    return nextUserState ;
   }
   
   
