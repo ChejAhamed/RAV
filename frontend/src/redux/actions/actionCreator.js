@@ -102,3 +102,28 @@ export function loadUsers() {
   };
 }
 
+export function signup(signupData) {
+  console.log(signupData)
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/api/auth/registe', { signupData });
+      console.log(data)
+      return dispatch({
+        type: actionTypes.AUTH_SIGNUP,
+        user: data,
+      });
+    } catch (error) {
+      if (error?.response?.status === 401) {
+        return dispatch({
+          type: actionTypes.AUTH_SIGNUP_ERROR,
+          message: error.message,
+        });
+      }
+
+      return dispatch({
+        type: actionTypes.ERROR_GENERIC,
+        message: error.message,
+      });
+    }
+  };
+}

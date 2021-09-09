@@ -25,16 +25,34 @@ export function Register(props) {
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }*/
+  const [registerData, setRegisterData] = useState({
+    name:"",
+    email:"",
+    password:""
+    
+    
+  });
+  const dispatch = useDispatch();
+  const repetPassword="";
+  function handleRegisterClick(event) {
+    if (repetPassword===password){
+    event.preventDefault();
+    dispatch(login(loginData));
+    
+   } else{
+     console.log("Please check password")
+   }
+  }
   return (
     <BoxContainer>
       <FormContainer>
-        <Input type="text"  placeholder="Full Name" />
-        <Input type="email" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
-        <Input type="password" placeholder="Confirm Password" />
+        <Input type="text" value ={registerData.name} onChange={(event)=>setRegisterData({...registerData, name: event.target.value})} placeholder="Full Name" />
+        <Input type="email" value ={registerData.email} onChange={(event)=>setRegisterData({...registerData, email: event.target.value})} placeholder="Email" />
+        <Input type="password" value ={registerData.password} onChange={(event)=>setRegisterData({...registerData, password: event.target.value})} placeholder="Password" />
+        <Input type="password"  value={repetPassword} placeholder="Confirm Password" />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
-      <SubmitButton type="submit">Signup</SubmitButton>
+      <SubmitButton onClick={handleRegisterClick} type="submit">Signup</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
         Already have an account?
