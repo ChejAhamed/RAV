@@ -92,7 +92,7 @@ export function logout() {
 
 export function loadUsers() {
   return async (dispatch) => {
-    const { data } = await axios('/api/users');
+    const { data } = await axios('/api/user');
     dispatch({
       type: actionTypes.USERS_LOAD,
       users: data,
