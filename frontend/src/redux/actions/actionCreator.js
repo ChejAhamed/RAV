@@ -2,20 +2,27 @@ import axios from 'axios';
 
 import actionTypes from './actionTypes';
 
-export function loadAllQuiz() {
+import userRefreshToken from './authActionCreator';
+
+
+export function loadAllQuiz(token,refreshToken) {
   return async dispatch => {
-    try {
-      
-      const {data} = await axios.get('http://localhost:5000/api/quiz');
-      
-      dispatch({
-        type: actionTypes.LOAD_ALL_QUIZ,
-        data,
-        
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    if(token){
+        try {
+          
+          const {data} = await axios.get('http://localhost:5000/api/quiz',
+         { headers: { Authorization: `Bearer ${token}`}});
+          
+          dispatch({
+            type: actionTypes.LOAD_ALL_QUIZ,
+            data,
+            
+          });
+        } catch (error) {
+          console.log(error);
+        }
+   }
+   return userRefreshToken(refreshToken);
     
   };
 }
@@ -60,3 +67,72 @@ export function totalScore(data){
     }
   }
 }
+export function login(loginData) {
+  console.log(loginData)
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('http://localhost:5000/api/auth/login', loginData );
+      console.log(data)
+      return dispatch({
+        type: actionTypes.AUTH_LOGIN,
+        user: data,
+      });
+    } catch (error) {
+      if (error?.response?.status === 401) {
+        return dispatch({
+          type: actionTypes.AUTH_LOGIN_ERROR,
+          message: error.message,
+        });
+      }
+
+      return dispatch({
+        type: actionTypes.ERROR_GENERIC,
+        message: error.message,
+      });
+    }
+  };
+}
+
+export function logout() {
+  return {
+    type: actionTypes.AUTH_LOGOUT,
+  };
+}
+
+export function loadUsers() {
+  return async (dispatch) => {
+    const { data } = await axios('http://localhost:5000/api/user');
+    dispatch({
+      type: actionTypes.USERS_LOAD,
+      users: data,
+    });
+  };
+}
+
+export function signup(signupData) {
+  console.log(signupData)
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post('/api/auth/signup',  signupData );
+      console.log(data)
+      return dispatch({
+        type: actionTypes.AUTH_SIGNUP,
+        user: data,
+      });
+    } catch (error) {
+      if (error?.response?.status === 401) {
+        return dispatch({
+          type: actionTypes.AUTH_SIGNUP_ERROR,
+          message: error.message,
+        });
+      }
+
+      return dispatch({
+        type: actionTypes.ERROR_GENERIC,
+        message: error.message,
+      });
+    }
+  };
+}
+
+

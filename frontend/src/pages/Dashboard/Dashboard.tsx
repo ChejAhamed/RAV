@@ -5,9 +5,11 @@ import {checkActiveQuiz } from '../../redux/actions/actionCreator'
 
 
 
-const Dashboard = () => {
+const Dashboard:React.FC =()=> {
   
- 
+  const authUser=useSelector((store:any)=>store.authUser)
+  console.log("authtificated user dashboard", authUser)
+  
   const dispatch= useDispatch();
   function ActivingQuiz():any {
     dispatch(checkActiveQuiz(activeQuiz))
@@ -21,6 +23,7 @@ const Dashboard = () => {
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = React.useState(false);
   const [disableSubmitButton, setDisableSubmitButton] = React.useState(true);
 
+  
   
   const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {
