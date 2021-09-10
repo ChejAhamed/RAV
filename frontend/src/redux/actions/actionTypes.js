@@ -14,6 +14,7 @@ export default {
 
     ERROR_GENERIC: 'ERROR_GENERIC',
 
+    REFRESH_TOKEN: 'REFRESH_TOKEN'
 
   };
   

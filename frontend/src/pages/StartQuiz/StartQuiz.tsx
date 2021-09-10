@@ -12,6 +12,7 @@ interface Score{
 const StartQuiz:React.FC =()=>{
   const authUser=useSelector((store:any)=>store.authUser)
   console.log("authtificated user Start QUiz", authUser)
+  const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
   const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const StartQuiz:React.FC =()=>{
  
 
   useEffect(() => {
-    dispatch(loadAllQuiz());
+    dispatch(loadAllQuiz(token, refreshToken));
 
     },[]);
     

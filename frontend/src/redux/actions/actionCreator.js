@@ -2,20 +2,27 @@ import axios from 'axios';
 
 import actionTypes from './actionTypes';
 
-export function loadAllQuiz() {
+import userRefreshToken from './authActionCreator';
+
+
+export function loadAllQuiz(token,refreshToken) {
   return async dispatch => {
-    try {
-      
-      const {data} = await axios.get('http://localhost:5000/api/quiz');
-      
-      dispatch({
-        type: actionTypes.LOAD_ALL_QUIZ,
-        data,
-        
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    if(token){
+        try {
+          
+          const {data} = await axios.get('http://localhost:5000/api/quiz',
+         { headers: { Authorization: `Bearer ${token}`}});
+          
+          dispatch({
+            type: actionTypes.LOAD_ALL_QUIZ,
+            data,
+            
+          });
+        } catch (error) {
+          console.log(error);
+        }
+   }
+   return userRefreshToken(refreshToken);
     
   };
 }
@@ -94,7 +101,7 @@ export function logout() {
 
 export function loadUsers() {
   return async (dispatch) => {
-    const { data } = await axios('/api/user');
+    const { data } = await axios('http://localhost:5000/api/user');
     dispatch({
       type: actionTypes.USERS_LOAD,
       users: data,
@@ -127,3 +134,5 @@ export function signup(signupData) {
     }
   };
 }
+
+
