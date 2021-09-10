@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { login } from '../../redux/actions/actionCreator';
 import loginData from '../../pages/Login/Login'
 import userRefreshToken from '../../redux/actions/authActionCreator';
-
+import { loadAllQuiz } from '../../redux/actions/actionCreator';
+import usersReducer from '../../redux/reducers/userReducer';
 
 const Header:React.FC =()=>{
   const totalScore= useSelector((store:any)=>store.totalScore)
@@ -13,19 +14,25 @@ const Header:React.FC =()=>{
   const [storage,setStorage]=useState(null)
   const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
   const dispatch = useDispatch();
+  
+
    useEffect(()=>{
      setStorage(JSON.parse(localStorage.getItem("userData") || ""))
      },[])
 
      useEffect(() => {
       dispatch(userRefreshToken( refreshToken));
-    }, []);
+    }, [token]);
 
    const sessionPersistence =()=>{
      if(storage!=="userData"){
-      dispatch( userRefreshToken(refreshToken) )
+      dispatch( userRefreshToken( refreshToken) )
      }
    }
+   useEffect(() => {
+    dispatch(loadAllQuiz(token, refreshToken));
+
+    },[token]);
  sessionPersistence();
   return(
         <header>

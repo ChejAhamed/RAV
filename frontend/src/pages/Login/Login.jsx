@@ -28,11 +28,12 @@ export default function Login () {
     password:""
     
   });
-  console.log("userLOGER", isAuthenticated.user.name)
+  console.log("userTOOOOKEN", isAuthenticated.user.token)
+  
   
 
 
-  localStorage.setItem("userData", JSON.stringify({email: loginData.email, password: loginData.password}));
+  
   const dispatch = useDispatch();
   
   function handleLoginClick(event) {
@@ -40,7 +41,7 @@ export default function Login () {
     console.log("gg",loginData)
     dispatch(login(loginData));
     if (isAuthenticated) {
-     
+      localStorage.setItem("userData", JSON.stringify({email: loginData.email, token:  isAuthenticated.user.token}));
       history.push('/dashboard')
     }
     
@@ -53,7 +54,7 @@ export default function Login () {
     
     */
     const userLogedd=(isAuthenticated)=>{
-
+      console.log("is loged login",isAuthenticated)
       dispatch(login(isAuthenticated))
      
      }

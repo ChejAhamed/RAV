@@ -13,7 +13,6 @@ export default combineReducers({
   activeQuiz,
   scoreQuiz,
   totalScore,
-  users,
   authUser,
   tokensReducer,
   

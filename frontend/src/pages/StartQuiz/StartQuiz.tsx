@@ -37,7 +37,7 @@ const StartQuiz:React.FC =()=>{
     },[]);
     
   useEffect(() => {
-    const result = totalScoreStore + score;
+    const result = totalScore + score;
     setTotalScore(result)
     console.log('h',result)
     dispatch({
@@ -80,7 +80,8 @@ const StartQuiz:React.FC =()=>{
 		}
     
     
-    
+    console.log("score"+ score)
+      console.log("total "+totalScore)
     
   }
   
