@@ -28,21 +28,36 @@ export default function Login () {
     password:""
     
   });
-  console.log("userLOGER", isAuthenticated.user)
+  console.log("userLOGER", isAuthenticated.user.name)
   
+
+
+  localStorage.setItem("userData", JSON.stringify({email: loginData.email, password: loginData.password}));
   const dispatch = useDispatch();
   
   function handleLoginClick(event) {
     event.preventDefault();
-    console.log("gg",isAuthenticated.isAuthenticated)
+    console.log("gg",loginData)
     dispatch(login(loginData));
+    if (isAuthenticated) {
+     
+      history.push('/dashboard')
+    }
+    
+    
+  }
+  /*dispatch(login(isAuthenticated.user));
     if (isAuthenticated) {
       history.push('/dashboard')
     }
-   
     
-  }
+    */
+    const userLogedd=(isAuthenticated)=>{
 
+      dispatch(login(isAuthenticated))
+     
+     }
+     userLogedd()
   
   return (
     <BoxContainer>

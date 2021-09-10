@@ -80,8 +80,7 @@ const StartQuiz:React.FC =()=>{
 		}
     
     
-    console.log("score"+ score)
-      console.log("total "+totalScore)
+    
     
   }
   
