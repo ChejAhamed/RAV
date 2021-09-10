@@ -10,10 +10,12 @@ interface Score{
 }
 
 const StartQuiz:React.FC =()=>{
+  const authUser=useSelector((store:any)=>store.authUser)
+  console.log("authtificated user Start QUiz", authUser)
   const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
-
+  console.log("quiiiz",quizz)
   /*function updatingScore():any {
     dispatch(scoreQuiz(score))
   }
@@ -38,7 +40,7 @@ const StartQuiz:React.FC =()=>{
     console.log('h',result)
     dispatch({
       type: actionTypes.TOTAL_SCORE,
-      data: totalScore
+      data: result
       
     })
 
