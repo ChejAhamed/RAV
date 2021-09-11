@@ -15,6 +15,7 @@ export default combineReducers({
   totalScore,
   authUser,
   tokensReducer,
+  users
   
 
 });

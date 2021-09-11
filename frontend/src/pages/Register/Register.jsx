@@ -36,11 +36,11 @@ export function Register() {
     dispatch(signup(signupData));
     console.log(signupData)
     
-    } else(
+    } else{
       alert('Both password are not matching')
-    )
     
-   
+    }
+    
   }
   return (
     <BoxContainer>

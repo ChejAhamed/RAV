@@ -101,7 +101,7 @@ function authController() {
       const token = jwt.sign(
         { user: data },
         process.env.SECRET_KEY,
-        { expiresIn: '1m' }
+        { expiresIn: '5m' }
       );
 
       return res.json({

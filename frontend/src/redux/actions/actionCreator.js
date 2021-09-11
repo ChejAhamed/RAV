@@ -73,7 +73,7 @@ export function login(loginData) {
     try {
       const { data } = await axios.post('http://localhost:5000/api/auth/login', loginData );
 
-      console.log(data)
+      console.log("data loggeeeed data action creator ", data)
       return dispatch({
         type: actionTypes.AUTH_LOGIN,
         user: data,
