@@ -19,7 +19,7 @@ export default function Login () {
   let history= useHistory()
   
   const { switchToSignup } = useContext(AccountContext);
-  const isAuthenticated = useSelector(( {authUser} ) => authUser);
+  const isAuthenticated = useSelector(( authUser ) => authUser);
 
   const users= useSelector((store)=>store.users)
   console.log(isAuthenticated)
@@ -28,9 +28,9 @@ export default function Login () {
     password:""
     
   });
-  console.log("userTOOOOKEN", isAuthenticated.user.token)
+  console.log("userTOOOOKEN", isAuthenticated)
   
-  
+  const toookens= useSelector((store)=>store.tokensReducer)
 
 
   
@@ -41,7 +41,10 @@ export default function Login () {
     console.log("gg",loginData)
     dispatch(login(loginData));
     if (isAuthenticated) {
-      localStorage.setItem("userData", JSON.stringify({email: loginData.email, token:  isAuthenticated.user.token}));
+      localStorage.setItem("userData", JSON.stringify({email: loginData.email, token:  toookens?.token}));
+      localStorage.setItem("jwt", toookens?.token )
+      console.log("traian",   isAuthenticated)
+      console.log("tooookensss  ", toookens?.token)
       history.push('/dashboard')
     }
     

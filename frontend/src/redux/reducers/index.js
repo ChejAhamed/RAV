@@ -6,7 +6,7 @@ import scoreQuiz from './addScoreQuizReducer';
 import totalScore from './totalScoreReducer';
 import users from './userReducer';
 import tokensReducer from './tokenReducer';
-
+import loadAllUsers from './loadAllUsersReducer';
 import authUser from './authReducers';
 export default combineReducers({
   quiz,
@@ -15,7 +15,9 @@ export default combineReducers({
   totalScore,
   authUser,
   tokensReducer,
-  users
+  users,
+  loadAllUsers
+
   
 
 });

@@ -50,6 +50,7 @@ const Profile:React.FC =()=>{
         <Input type="email" value ={updateData.email} onChange={(event)=>setUpdateData({...updateData, email: event.target.value})} placeholder="Email" />
         <Input type="password" value ={updateData.password} onChange={(event)=>setUpdateData({...updateData, password: event.target.value})} placeholder="Password" />
         <Input type="avatar"  value={repetPassword.password} onChange={(event)=>setRepetPassword({...repetPassword, password: event.target.value})} placeholder="Confirm Password" />
+        <Input type="file"   />
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
       <SubmitButton onClick={handleSignupClick} type="submit">Update</SubmitButton>

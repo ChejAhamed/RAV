@@ -4,6 +4,27 @@ import actionTypes from './actionTypes';
 
 import userRefreshToken from './authActionCreator';
 
+export function loadAllUsers(token,refreshToken) {
+  return async dispatch => {
+    if(token){
+        try {
+          
+          const {data} = await axios.get('http://localhost:5000/api/quiz',
+         { headers: { Authorization: `Bearer ${token}`}});
+          
+          dispatch({
+            type: actionTypes.LOAD_ALL_USERS,
+            data,
+            
+          });
+        } catch (error) {
+          console.log(error);
+        }
+   }
+   return userRefreshToken(refreshToken);
+    
+  };
+}
 
 export function loadAllQuiz(token,refreshToken) {
   return async dispatch => {
