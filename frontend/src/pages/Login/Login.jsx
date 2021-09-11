@@ -22,13 +22,13 @@ export default function Login () {
   const isAuthenticated = useSelector(( authUser ) => authUser);
 
   const users= useSelector((store)=>store.users)
-  console.log(isAuthenticated)
+ 
   const [loginData, setLoginData] = useState({
     email:"",
     password:""
     
   });
-  console.log("userTOOOOKEN", isAuthenticated)
+ 
   
   const toookens= useSelector((store)=>store.tokensReducer)
 
@@ -38,13 +38,12 @@ export default function Login () {
   
   function handleLoginClick(event) {
     event.preventDefault();
-    console.log("gg",loginData)
+   
     dispatch(login(loginData));
     if (isAuthenticated) {
-      localStorage.setItem("userData", JSON.stringify({email: loginData.email, token:  toookens?.token}));
-      localStorage.setItem("jwt", toookens?.token )
-      console.log("traian",   isAuthenticated)
-      console.log("tooookensss  ", toookens?.token)
+      localStorage.setItem("userData", JSON.stringify({email: loginData.email}));
+      localStorage.setItem("jwt",  JSON.stringify(toookens?.token) )
+      
       history.push('/dashboard')
     }
     
@@ -57,7 +56,7 @@ export default function Login () {
     
     */
     const userLogedd=(isAuthenticated)=>{
-      console.log("is loged login",isAuthenticated)
+      
       dispatch(login(isAuthenticated))
      
      }

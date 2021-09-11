@@ -1,4 +1,5 @@
 import actionTypes from "../actions/actionTypes";
+
 export default function loadAllUsersReducer(
     users = [],
     action,
@@ -7,8 +8,8 @@ export default function loadAllUsersReducer(
   
     switch (action.type) {
       case actionTypes.LOAD_ALL_USERS:
-        nextUsersState = action.users;
-        console.log("reduceeer user",nextUsersState)
+        nextUsersState = action.data;
+        console.log("reduceeer user",action.data)
         break;
   
       default:

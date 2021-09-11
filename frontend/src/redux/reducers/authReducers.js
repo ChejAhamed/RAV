@@ -22,6 +22,6 @@ export default function authUserReducer(
     default:
       break;
   }
-   console.log(nextAuthState)
+   
   return nextAuthState;
 }

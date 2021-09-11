@@ -11,13 +11,13 @@ interface Score{
 
 const StartQuiz:React.FC =()=>{
   const authUser=useSelector((store:any)=>store.authUser)
-  console.log("authtificated user Start QUiz", authUser)
+
   const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
   const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const totalScoreStore =useSelector((store:any)=>store.totalScore)
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
-  console.log("quiiiz",quizz)
+ 
   /*function updatingScore():any {
     dispatch(scoreQuiz(score))
   }
@@ -39,7 +39,7 @@ const StartQuiz:React.FC =()=>{
   useEffect(() => {
     const result = totalScore + score;
     setTotalScore(result)
-    console.log('h',result)
+   
     dispatch({
       type: actionTypes.TOTAL_SCORE,
       data: result
@@ -80,8 +80,7 @@ const StartQuiz:React.FC =()=>{
 		}
     
     
-    console.log("score"+ score)
-      console.log("total "+totalScore)
+   
     
   }
   

@@ -9,8 +9,9 @@ export function loadAllUsers(token,refreshToken) {
     if(token){
         try {
           
-          const {data} = await axios.get('http://localhost:5000/api/quiz',
+          const {data} = await axios.get('http://localhost:5000/api/auth/user/',
          { headers: { Authorization: `Bearer ${token}`}});
+        
           
           dispatch({
             type: actionTypes.LOAD_ALL_USERS,
@@ -33,7 +34,7 @@ export function loadAllQuiz(token,refreshToken) {
           
           const {data} = await axios.get('http://localhost:5000/api/quiz',
          { headers: { Authorization: `Bearer ${token}`}});
-          
+      
           dispatch({
             type: actionTypes.LOAD_ALL_QUIZ,
             data,
@@ -43,6 +44,7 @@ export function loadAllQuiz(token,refreshToken) {
           console.log(error);
         }
    }
+
    return userRefreshToken(refreshToken);
     
   };
@@ -89,12 +91,12 @@ export function totalScore(data){
   }
 }
 export function login(loginData) {
-  console.log("actionCreator loign data",loginData)
+
   return async (dispatch) => {
     try {
       const { data } = await axios.post('http://localhost:5000/api/auth/login', loginData );
 
-      console.log("data loggeeeed data action creator ", data)
+     
       return dispatch({
         type: actionTypes.AUTH_LOGIN,
         user: data,
@@ -124,6 +126,7 @@ export function logout() {
 export function loadUsers() {
   return async (dispatch) => {
     const { data } = await axios('http://localhost:5000/api/user');
+    console.log("loadddddddddddd user===", data)
     dispatch({
       type: actionTypes.USERS_LOAD,
       users: data,
@@ -132,11 +135,11 @@ export function loadUsers() {
 }
 
 export function signup(signupData) {
-  console.log(signupData)
+  
   return async (dispatch) => {
     try {
       const { data } = await axios.post('/api/auth/signup',  signupData );
-      console.log(data)
+      
       return dispatch({
         type: actionTypes.AUTH_SIGNUP,
         user: data,

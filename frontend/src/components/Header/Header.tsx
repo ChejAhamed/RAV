@@ -12,13 +12,13 @@ import authUserReducer from '../../redux/reducers/authReducers';
 const Header:React.FC =()=>{
   const totalScore= useSelector((store:any)=>store.totalScore)
   const user=useSelector((store:any)=>store.users)
-  console.log("useerss header",user)
+ 
   const [storage,setStorage]=useState(null)
   const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
   const dispatch = useDispatch();
   
   const authUser=useSelector((store:any)=>store.authUser)
-  console.log("authtificated user login", authUser.user.user)
+
 
    useEffect(()=>{
      setStorage(JSON.parse(localStorage.getItem("userData") || ""))

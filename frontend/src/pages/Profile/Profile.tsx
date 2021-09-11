@@ -31,7 +31,7 @@ const Profile:React.FC =()=>{
         if (repetPassword.password===updateData.password){
         event.preventDefault();
         //dispatch(signup(updateData));
-        console.log(updateData)
+        
         }  else{
             alert('Both password are not matching')
           
@@ -41,7 +41,7 @@ const Profile:React.FC =()=>{
        
       }
     const score = useSelector((store:any)=>store.score)
-    console.log(score)
+   
     return(
     <div>Profile=====
        <BoxContainer>
