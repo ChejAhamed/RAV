@@ -8,7 +8,7 @@ import {checkActiveQuiz } from '../../redux/actions/actionCreator'
 const Dashboard:React.FC =()=> {
   
   const authUser=useSelector((store:any)=>store.authUser)
-  console.log("authtificated user dashboard", authUser.user.user.name)
+  console.log("authtificated user dashboard", authUser?.user?.user?.name)
   
   const dispatch= useDispatch();
   function ActivingQuiz():any {

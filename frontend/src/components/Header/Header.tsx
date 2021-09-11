@@ -18,7 +18,7 @@ const Header:React.FC =()=>{
   const dispatch = useDispatch();
   
   const authUser=useSelector((store:any)=>store.authUser)
-  console.log("authtificated user login", authUser.user.user.name)
+  console.log("authtificated user login", authUser.user.user)
 
    useEffect(()=>{
      setStorage(JSON.parse(localStorage.getItem("userData") || ""))
@@ -33,6 +33,7 @@ const Header:React.FC =()=>{
       dispatch( userRefreshToken( ) )
      }
    }
+    
    /*useEffect(() => {
     dispatch(loadAllQuiz(token, refreshToken));
 
@@ -40,9 +41,12 @@ const Header:React.FC =()=>{
  */
   return(
         <header>
+
         <h2>HEADEERRR</h2>
-         <p>Name:{authUser.user.user.name}</p>
+         <p>Name:{authUser.user?.user?.name}</p>
          <p>Total Score:{totalScore}</p>
+         <p>Quiz Completed:{authUser.user?.user?.quizCompleted}</p>
+         <img src={authUser?.user?.user?.avatar} width="50" height="70" alt="avatar" />
         <nav>
           <Link to="/dashboard">Dashboard</Link>
           <Link to="/profile">Profile</Link>
