@@ -13,6 +13,8 @@ export default function authUserReducer(
         isAuthenticated: true,
         user: action.user,
       };
+      localStorage.setItem("userData",JSON.stringify({user:action.user}))
+      localStorage.setItem("jwt",JSON.stringify(action.user.token))
       break;
 
     case actionTypes.AUTH_LOGOUT:

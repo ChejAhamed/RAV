@@ -31,19 +31,23 @@ function App() {
     <BrowserRouter>
      
   
-        <Header /> 
+        
           <Switch> 
-         
           <Route path='/' exact component={LoginRegister}/>
+            <div>
+            
+            <Header /> 
+            <nav/>
          <Route path="/dashboard" component={Dashboard} />
           <Route path="/profile" component={Profile} />
           <Route path="/statistics" component={Statistics} />
           <Route path="/startquiz" component={StartQuiz} />
           <Route component={NotFound} />
-        
+          <Footer />
+          </div>
          
         </Switch>
-           <Footer />
+          
         
     </BrowserRouter>
     </Provider>

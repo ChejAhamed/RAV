@@ -22,8 +22,11 @@ const Dashboard:React.FC =()=> {
   const [disableSubmitNumberButton, setDisableSubmitNumberButton] = React.useState(false);
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = React.useState(false);
   const [disableSubmitButton, setDisableSubmitButton] = React.useState(true);
+    
+  useEffect(()=>{
 
-  
+
+  })
   
   const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {

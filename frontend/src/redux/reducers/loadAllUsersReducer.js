@@ -9,7 +9,6 @@ export default function loadAllUsersReducer(
     switch (action.type) {
       case actionTypes.LOAD_ALL_USERS:
         nextUsersState = action.data;
-        console.log("reduceeer user",action.data)
         break;
   
       default:

@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { loadAllQuiz } from '../../redux/actions/actionCreator';
 import scoreQuiz from '../../redux/reducers/addScoreQuizReducer';
 import actionTypes from '../../redux/actions/actionTypes';
+import {loadAllUsers} from '../../redux/actions/actionCreator'
 
 interface Score{
   score:number
@@ -12,9 +13,13 @@ interface Score{
 const StartQuiz:React.FC =()=>{
   const authUser=useSelector((store:any)=>store.authUser)
 
-  const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
+  // const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
+//  const token2= localStorage.getItem('jwt');
+//  const refreshToken2=localStorage.getItem('jwt')
+
   const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const totalScoreStore =useSelector((store:any)=>store.totalScore)
+  
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
  
@@ -27,22 +32,26 @@ const StartQuiz:React.FC =()=>{
   const [showScore, setShowScore] = React.useState(false);
   const [totalScore, setTotalScore] = React.useState(totalScoreStore)
   
-  
+  useEffect(() => {
+    dispatch(loadAllUsers());
+
+    },[]);
+    
   
  
 
   useEffect(() => {
-    dispatch(loadAllQuiz(token, refreshToken));
+    dispatch(loadAllQuiz());
 
     },[]);
     
   useEffect(() => {
-    const result = totalScore + score;
-    setTotalScore(result)
+    const data = totalScore + score;
+    setTotalScore(data)
    
     dispatch({
       type: actionTypes.TOTAL_SCORE,
-      data: result
+      data: data
       
     })
 

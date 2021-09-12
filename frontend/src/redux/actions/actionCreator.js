@@ -4,14 +4,12 @@ import actionTypes from './actionTypes';
 
 import userRefreshToken from './authActionCreator';
 
-export function loadAllUsers(token,refreshToken) {
+export function loadAllUsers() {
   return async dispatch => {
-    if(token){
+   
         try {
           
-          const {data} = await axios.get('http://localhost:5000/api/auth/user/',
-         { headers: { Authorization: `Bearer ${token}`}});
-        
+          const {data} = await axios.get('http://localhost:5000/api/user');
           
           dispatch({
             type: actionTypes.LOAD_ALL_USERS,
@@ -21,19 +19,19 @@ export function loadAllUsers(token,refreshToken) {
         } catch (error) {
           console.log(error);
         }
-   }
-   return userRefreshToken(refreshToken);
+   
+   return true;
     
   };
 }
 
-export function loadAllQuiz(token,refreshToken) {
+export function loadAllQuiz() {
   return async dispatch => {
-    if(token){
+   
         try {
           
-          const {data} = await axios.get('http://localhost:5000/api/quiz',
-         { headers: { Authorization: `Bearer ${token}`}});
+          const {data} = await axios.get('http://localhost:5000/api/quiz'
+         );
       
           dispatch({
             type: actionTypes.LOAD_ALL_QUIZ,
@@ -43,9 +41,9 @@ export function loadAllQuiz(token,refreshToken) {
         } catch (error) {
           console.log(error);
         }
-   }
+   
 
-   return userRefreshToken(refreshToken);
+   return true;
     
   };
 }
@@ -77,7 +75,9 @@ export function addScoreQuiz(data){
     }
   }
 }
-export function totalScore(data){
+export function totalScore(data){ 
+  //const {data} = await axios.put('http://localhost:5000/api/user',body,
+  //{ headers: { Authorization: `Bearer ${token}`}});
   return dispatch=>{
     try {
       dispatch({

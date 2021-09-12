@@ -21,8 +21,8 @@ export default function Login () {
   const { switchToSignup } = useContext(AccountContext);
   const isAuthenticated = useSelector(( authUser ) => authUser);
 
-  const users= useSelector((store)=>store.users)
- 
+  const users= useSelector((store)=>store.loadAllUsers)
+ console.log('userssss login', users)
   const [loginData, setLoginData] = useState({
     email:"",
     password:""
@@ -30,7 +30,8 @@ export default function Login () {
   });
  
   
-  const toookens= useSelector((store)=>store.tokensReducer)
+ /* localStorage.setItem("userData", JSON.stringify({email: loginData.email}));
+      localStorage.setItem("jwt",  JSON.stringify(toookens?.token) )*/
 
 
   
@@ -41,20 +42,15 @@ export default function Login () {
    
     dispatch(login(loginData));
     if (isAuthenticated) {
-      localStorage.setItem("userData", JSON.stringify({email: loginData.email}));
-      localStorage.setItem("jwt",  JSON.stringify(toookens?.token) )
+     
       
       history.push('/dashboard')
     }
     
     
   }
-  /*dispatch(login(isAuthenticated.user));
-    if (isAuthenticated) {
-      history.push('/dashboard')
-    }
+
     
-    */
     const userLogedd=(isAuthenticated)=>{
       
       dispatch(login(isAuthenticated))

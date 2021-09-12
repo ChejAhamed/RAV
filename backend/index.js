@@ -3,7 +3,7 @@ const express = require('express');
 const debug = require('debug')('quizApi');
 const morgan = require('morgan');
 const chalk = require('chalk');
-const passport = require('passport');
+// const passport = require('passport');
 const cors = require('cors');
 
 require('./src/config/mongooseConfig');
@@ -22,11 +22,11 @@ server.use('/api/auth/', authRoutes);
 
 const quizRouter = require('./src/routes/quizRoutes');
 
-server.use('/api/quiz', passport.authenticate('jwt', { session: false }), quizRouter);
+server.use('/api/quiz', quizRouter);
 
 const userRouter = require('./src/routes/userRoutes');
 
-server.use('/api/user', passport.authenticate('jwt', { session: false }), userRouter);
+server.use('/api/user', userRouter);
 
 server.listen(
   port,
