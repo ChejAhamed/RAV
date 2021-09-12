@@ -44,16 +44,28 @@ const Header:React.FC =()=>{
                   <img src="https://i.ibb.co/rfLVZ9f/logo.png" alt="logo" width="80" height="60"/>
                 </div>
                 <div className="user_details">
-                  <p>Name:</p>
-                  <p>Total Score:</p>
-                  <p>Quiz Completed:</p>
-                  <img src="" width="50" height="70" alt="avatar" />
+                    <div className="user_details--name">
+                      <p>Name:</p>
+                    </div>
+                    <div className="user_details--name">
+                      <p>Total Score:</p>
+                    </div>
+                    <div className="user_details--name">
+                        <p>Quiz Completed:</p>
+                    </div>
+                      
+                    <div className="user_details--avatar">
+                        <img src="" width="50" height="70" alt="avatar" />
+                    </div>
+                       
+                  </div>
+                  <div className="nav">
+                    <nav>
+                      <Link to="/dashboard">Dashboard</Link>
+                      <Link to="/profile">Profile</Link>
+                      <Link to="/statistics">Statistics</Link>
+                  </nav>
                 </div>
-                <nav>
-                  <Link to="/dashboard">Dashboard</Link>
-                  <Link to="/profile">Profile</Link>
-                  <Link to="/statistics">Statistics</Link>
-                </nav>
         </div>
       </header>
     )
