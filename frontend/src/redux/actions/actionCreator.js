@@ -2,7 +2,6 @@ import axios from 'axios';
 
 import actionTypes from './actionTypes';
 
-import userRefreshToken from './authActionCreator';
 
 export function loadAllUsers() {
   return async dispatch => {
@@ -91,12 +90,12 @@ export function totalScore(data){
   }
 }
 export function login(loginData) {
-  console.log(loginData)
+  
   return async (dispatch) => {
     
     try {
-      const { data } = await axios.post('http://localhost:5000/api/login', loginData );
-      console.log("user action creator",data)
+      const { data } = await axios.post('http://localhost:5000/api/auth/login', loginData );
+      console.log("user action creator", data.user)
      
       return dispatch({
         type: actionTypes.AUTH_LOGIN,

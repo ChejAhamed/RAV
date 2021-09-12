@@ -1,7 +1,7 @@
 import actionTypes from '../actions/actionTypes';
 
 
-export default function authUserReducer(
+export default function loggedUserReducer(
   auth ={ authInitialState:false,user:{}},
   action,
 ) {
@@ -13,8 +13,7 @@ export default function authUserReducer(
         isAuthenticated: true,
         user: action.user,
       };
-      localStorage.setItem("userData",JSON.stringify({user:action.user}))
-      localStorage.setItem("jwt",JSON.stringify(action.user.token))
+      
       break;
 
     case actionTypes.AUTH_LOGOUT:

@@ -42,14 +42,15 @@ function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/statistics" component={Statistics} />
           <Route path="/startquiz" component={StartQuiz} />
-         <Route component={NotFound} />
+          
           <Footer />
           </div>
-         
+          <Route component={NotFound} />
         </Switch>
           
         
     </BrowserRouter>
+    
     </Provider>
   );
 }

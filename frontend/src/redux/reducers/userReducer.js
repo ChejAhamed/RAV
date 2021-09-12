@@ -2,14 +2,14 @@ import actionTypes from '../actions/actionTypes';
 
 
 export default function usersReducer(
-  users = [],
+  user = [],
   action,
 ) {
-  let nextUsersState = users;
+  let nextUsersState = user;
 
   switch (action.type) {
     case actionTypes.USERS_LOAD:
-      nextUsersState = action.users;
+      nextUsersState = action.user;
       
       break;
 

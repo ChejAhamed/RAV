@@ -9,10 +9,11 @@ import { loadAllQuiz } from '../../redux/actions/actionCreator';
 import './Header.css'
 import { loadAllUsers } from '../../redux/actions/actionCreator';
 const Header:React.FC =()=>{
-  const totalScore= useSelector((store:any)=>store.totalScore)
-  const user=useSelector((store:any)=>store.users)
+  
+  const user=useSelector((store:any)=>store.loggedUser.user.user)
+
   const quizz= useSelector((store:any)=>store.quiz)
- 
+ console.log("useer dashboard", user.name)
  
   const dispatch = useDispatch();
   const allUsers=useSelector((store:any)=>store.loadAllUsers)
@@ -20,22 +21,10 @@ const Header:React.FC =()=>{
     dispatch(loadAllUsers());
 
     },[]);
-  const totalScoreStore =useSelector((store:any)=>store.totalScore)
+
   
  
   
-  useEffect(() => {
-    dispatch(loadAllQuiz());
-
-    },[]);
-
-
-
-     useEffect(() => {
-      dispatch( login(user));
-    }, []);
-
-  ;
   
   return(
         <header>
@@ -45,17 +34,17 @@ const Header:React.FC =()=>{
                 </div>
                 <div className="user_details">
                     <div className="user_details--name">
-                      <p>Name:</p>
+                      <p>Name:{user.name}</p>
                     </div>
                     <div className="user_details--name">
-                      <p>Total Score:</p>
+                      <p>Total Score:{user.totalScore}</p>
                     </div>
                     <div className="user_details--name">
-                        <p>Quiz Completed:</p>
+                        <p>Quiz Completed:{user.quizCompleted}</p>
                     </div>
                       
                     <div className="user_details--avatar">
-                        <img src="" width="50" height="70" alt="avatar" />
+                        <img src={user.avatar} width="50" height="70" alt="avatar" />
                     </div>
                        
                   </div>
