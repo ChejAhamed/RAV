@@ -91,11 +91,12 @@ export function totalScore(data){
   }
 }
 export function login(loginData) {
-
+  console.log(loginData)
   return async (dispatch) => {
+    
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/login', loginData );
-
+      const { data } = await axios.post('http://localhost:5000/api/login', loginData );
+      console.log("user action creator",data)
      
       return dispatch({
         type: actionTypes.AUTH_LOGIN,

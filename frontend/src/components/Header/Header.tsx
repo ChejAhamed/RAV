@@ -13,7 +13,7 @@ const Header:React.FC =()=>{
   const user=useSelector((store:any)=>store.users)
   const quizz= useSelector((store:any)=>store.quiz)
  
-  
+ 
   const dispatch = useDispatch();
   const allUsers=useSelector((store:any)=>store.loadAllUsers)
   useEffect(() => {
@@ -21,9 +21,7 @@ const Header:React.FC =()=>{
 
     },[]);
   const totalScoreStore =useSelector((store:any)=>store.totalScore)
-  console.log("@theaderrotal", totalScoreStore)
   
- console.log("headerr users ",allUsers)
  
   
   useEffect(() => {
@@ -31,37 +29,32 @@ const Header:React.FC =()=>{
 
     },[]);
 
-// console.log("new total scoe",userStoredLocalStorage.user?.user?.score)
-//    useEffect(()=>{
-//      setStorage(JSON.parse(localStorage.getItem("userData") || ""))
-//      },[])
+
 
      useEffect(() => {
       dispatch( login(user));
     }, []);
 
-  //  const sessionPersistence =()=>{
-  //    if(storage!=="userData"){
-  //     dispatch( userRefreshToken( refreshToken) )
-  //    }
-  //  }
-    
-  //  sessionPersistence();
+  ;
   
   return(
         <header>
-
-        <h2>HEADEERRR</h2>
-         <p>Name:</p>
-         <p>Total Score:</p>
-         <p>Quiz Completed:</p>
-         <img src="" width="50" height="70" alt="avatar" />
-        <nav>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/statistics">Statistics</Link>
-        </nav>
-        
+            <div>
+                <div className="logo">
+                  <img src="https://i.ibb.co/rfLVZ9f/logo.png" alt="logo" width="80" height="60"/>
+                </div>
+                <div className="user_details">
+                  <p>Name:</p>
+                  <p>Total Score:</p>
+                  <p>Quiz Completed:</p>
+                  <img src="" width="50" height="70" alt="avatar" />
+                </div>
+                <nav>
+                  <Link to="/dashboard">Dashboard</Link>
+                  <Link to="/profile">Profile</Link>
+                  <Link to="/statistics">Statistics</Link>
+                </nav>
+        </div>
       </header>
     )
 }

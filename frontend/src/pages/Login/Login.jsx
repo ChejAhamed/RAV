@@ -21,8 +21,6 @@ export default function Login () {
   const { switchToSignup } = useContext(AccountContext);
   const isAuthenticated = useSelector(( authUser ) => authUser);
 
-  const users= useSelector((store)=>store.loadAllUsers)
- console.log('userssss login', users)
   const [loginData, setLoginData] = useState({
     email:"",
     password:""
@@ -30,19 +28,14 @@ export default function Login () {
   });
  
   
- /* localStorage.setItem("userData", JSON.stringify({email: loginData.email}));
-      localStorage.setItem("jwt",  JSON.stringify(toookens?.token) )*/
-
-
-  
   const dispatch = useDispatch();
   
   function handleLoginClick(event) {
     event.preventDefault();
-   
+    
     dispatch(login(loginData));
     if (isAuthenticated) {
-     
+      
       
       history.push('/dashboard')
     }

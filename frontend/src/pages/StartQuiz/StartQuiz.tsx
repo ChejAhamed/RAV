@@ -40,10 +40,7 @@ const StartQuiz:React.FC =()=>{
   
  
 
-  useEffect(() => {
-    dispatch(loadAllQuiz());
-
-    },[]);
+  
     
   useEffect(() => {
     const data = totalScore + score;

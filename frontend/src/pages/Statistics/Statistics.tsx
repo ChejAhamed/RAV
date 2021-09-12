@@ -4,24 +4,27 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import {loadAllUsers} from '../../redux/actions/actionCreator';
 const Statistics:React.FC =()=>{
-const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
-    //const allUsers=useSelector((store:any)=>store.loadAllUsers)
+
+ 
     const allUsers=useSelector((store:any)=>store.loadAllUsers);
-   //const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
+ 
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadAllUsers());
-       },[]);
-       useEffect(() => {
-        
-       },[allUsers]);
-    console.log('all users', allUsers)
+    },[]);
+    
+    const usersSoted = allUsers.slice(0);
+    usersSoted.sort(function(firstUser:any,lastUser:any) {
+         return lastUser.totalScore - firstUser.totalScore;
+    });
+         
+    console.log('all users', usersSoted)
     return(
     <div>Statistics=====
        <div>
 						
 			 
-                {allUsers && allUsers.map((user:any)=>
+                {usersSoted && usersSoted.map((user:any)=>
                 <div>
                 <p>Name:{user.name}</p>
                 <p>Total Score:{user?.totalScore}</p>
