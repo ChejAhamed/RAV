@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
+import './Statistics.css'
 import {loadAllUsers} from '../../redux/actions/actionCreator';
 const Statistics:React.FC =()=>{
 
@@ -18,17 +18,31 @@ const Statistics:React.FC =()=>{
          return lastUser.totalScore - firstUser.totalScore;
     });
          
-    console.log('all users', usersSoted)
+    
     return(
-    <div>Statistics=====
-       <div>
+    <div className="statistics">
+        <div className="top_player">
+            <h3>Top Players</h3>
+        </div>
+        <div className="">
 						
 			 
                 {usersSoted && usersSoted.map((user:any)=>
-                <div>
-                <p>Name:{user.name}</p>
-                <p>Total Score:{user?.totalScore}</p>
-                <p>Quiz Completed:{user?.quizCompleted}</p>
+                <div className="user_sorted">
+                <div className="user_sorted--name">
+                <p>Name: </p> <p>{user.name}</p>
+
+                </div>
+                <div className="user_sorted--score">
+                <p>Total Score: </p> <p>{user.totalScore}</p>
+                </div>
+                                   
+                <div className="user_sorted--quizcompleted">
+                <p>Quiz Completed: </p> <p>{user.quizCompleted}</p>
+                </div>
+
+             
+               
                 </div>
             )} 
           	
