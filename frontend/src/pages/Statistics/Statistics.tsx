@@ -3,16 +3,20 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './Statistics.css'
 import {loadAllUsers} from '../../redux/actions/actionCreator';
+import loggedUserReducer from '../../redux/reducers/loggedUserReducers';
 const Statistics:React.FC =()=>{
 
- 
+    const isAuthenticated=useSelector((authUser)=>authUser)
+   
     const allUsers=useSelector((store:any)=>store.loadAllUsers);
- 
+    console.log("user statistic",isAuthenticated)
     const dispatch = useDispatch();
+    const loggedUser=useSelector((loggedUser)=>loggedUser)
+    //console.log("user statistic",refreshToken)
     useEffect(() => {
         dispatch(loadAllUsers());
     },[]);
-    
+    console.log("user stalooooooooic",loggedUser)
     const usersSoted = allUsers.slice(0);
     usersSoted.sort(function(firstUser:any,lastUser:any) {
          return lastUser.totalScore - firstUser.totalScore;
