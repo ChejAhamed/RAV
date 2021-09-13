@@ -32,7 +32,6 @@ export default function Login () {
   
   function handleLoginClick(event) {
     event.preventDefault();
-    
     dispatch(login(loginData));
     if (isAuthenticated) {
       

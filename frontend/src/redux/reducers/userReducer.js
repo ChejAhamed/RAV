@@ -10,8 +10,8 @@ export default function usersReducer(
   switch (action.type) {
     case actionTypes.USERS_LOAD:
       nextUsersState = action.user;
-      
       break;
+ 
 
     default:
       break;

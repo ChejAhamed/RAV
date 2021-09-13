@@ -4,13 +4,13 @@ export default function tokensReducer(tokens = {}, action) {
   let newTokens = tokens;
 
   switch (action.type) {
-    case actionTypes.AUTH_LOGIN:
-      newTokens = {
-        token: action.user.token,
-        refreshToken: action.user.refreshToken
-      };
+    // case actionTypes.AUTH_LOGIN:
+    //   newTokens = {
+    //     token: action.user.token,
+    //     refreshToken: action.user.refreshToken
+    //   };
 
-      break;
+    //   break;
 
     case actionTypes.REFRESH_TOKEN:
       newTokens = {

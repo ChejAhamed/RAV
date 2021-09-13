@@ -2,6 +2,26 @@ import axios from 'axios';
 
 import actionTypes from './actionTypes';
 
+export function updateUser(propertyName,value,userId){
+  return async dispatch=>{
+    try{
+      const body={}
+      body[`${propertyName}`]=value
+      const {data}=await axios.put(`http://localhost:5000/api/user/${userId}`,body)
+      
+      dispatch({
+        type:actionTypes.UPDATE_USER,
+        payload:{
+          propertyName,
+          value
+        }
+      })
+    } catch(error){
+      console.log(error)
+    }
+  }
+
+}
 
 export function loadAllUsers() {
   return async dispatch => {
@@ -74,10 +94,14 @@ export function addScoreQuiz(data){
     }
   }
 }
-export function totalScore(data){ 
-  //const {data} = await axios.put('http://localhost:5000/api/user',body,
-  //{ headers: { Authorization: `Bearer ${token}`}});
-  return dispatch=>{
+export function totalScoreUpdate({sessionScore, userId}){ 
+  const user={
+    totalScore:sessionScore
+  }
+  return async dispatch=>{
+    const {data} = await axios.put(
+      `http://localhost:5000/api/user/${userId}`,
+    user);
     try {
       dispatch({
         type: actionTypes.TOTAL_SCORE,
@@ -95,7 +119,6 @@ export function login(loginData) {
     
     try {
       const { data } = await axios.post('http://localhost:5000/api/auth/login', loginData );
-     
       return dispatch({
         type: actionTypes.AUTH_LOGIN,
         user: data,
@@ -125,7 +148,6 @@ export function logout() {
 export function loadUsers() {
   return async (dispatch) => {
     const { data } = await axios('http://localhost:5000/api/user');
-    console.log("loadddddddddddd user===", data)
     dispatch({
       type: actionTypes.USERS_LOAD,
       users: data,

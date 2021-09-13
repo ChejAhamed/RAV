@@ -19,6 +19,12 @@ export default function loggedUserReducer(
     case actionTypes.AUTH_LOGOUT:
       nextAuthState = authInitialState;
       break;
+      case actionTypes.UPDATE_USER:
+       
+        nextAuthState.user.user[`${action.payload.propertyName}`]=action.payload.value;
+        
+        
+          break;
 
     default:
       break;

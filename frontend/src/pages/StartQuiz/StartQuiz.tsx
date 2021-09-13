@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { loadAllQuiz } from '../../redux/actions/actionCreator';
+import { loadAllQuiz, totalScoreUpdate, updateUser } from '../../redux/actions/actionCreator';
 import scoreQuiz from '../../redux/reducers/addScoreQuizReducer';
 import actionTypes from '../../redux/actions/actionTypes';
 import {loadAllUsers} from '../../redux/actions/actionCreator'
@@ -12,28 +12,31 @@ interface Score{
 
 const StartQuiz:React.FC =()=>{
   const authUser=useSelector((store:any)=>store.authUser)
+  const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
+  const {user}=useSelector((store:any)=>store.loggedUser)
+  
+  const quizz= useSelector((store:any)=>store.quiz)
+  const dispatch = useDispatch();
+  const [currentQuestion, setCurrentQuestion] = React.useState(0);
+  const [score, setScore] = React.useState(0)
+  const [showScore, setShowScore] = React.useState(false);
+  const [totalScore, setTotalScore] = React.useState(user?.totalScore)
 
   // const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
 //  const token2= localStorage.getItem('jwt');
 //  const refreshToken2=localStorage.getItem('jwt')
 
-  const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
-  const totalScoreStore =useSelector((store:any)=>store.totalScore)
   
-  const quizz= useSelector((store:any)=>store.quiz)
-  const dispatch = useDispatch();
- 
   /*function updatingScore():any {
     dispatch(scoreQuiz(score))
   }
  */
-  const [currentQuestion, setCurrentQuestion] = React.useState(0);
-  const [score, setScore] = React.useState(0)
-  const [showScore, setShowScore] = React.useState(false);
-  const [totalScore, setTotalScore] = React.useState(totalScoreStore)
+ 
   
   useEffect(() => {
     dispatch(loadAllUsers());
+    dispatch(loadAllQuiz());
+    
 
     },[]);
     
@@ -43,26 +46,25 @@ const StartQuiz:React.FC =()=>{
   
     
   useEffect(() => {
-    const data = totalScore + score;
-    setTotalScore(data)
-   
-    dispatch({
-      type: actionTypes.TOTAL_SCORE,
-      data: data
-      
-    })
 
+    const value= user.user.totalScore+score;
+   const  userId=user.user._id
+    setTotalScore(value)
+  
+    //dispatch(totalScoreUpdate(data))
+    dispatch(updateUser("totalScore",value,userId))
+    //dispatch(updateUser("completedQuiz",value,userId))
     },[showScore]);
 
-  console.log("quiiiiz",quizz)
+ 
     const filteredQuiz= quizz.filter(({category}: any)=>
     category===choosenTheme );
 
-    console.log("filltereeeed2",filteredQuiz)
+  
 
   const quizSelected=filteredQuiz.slice(0,numberOfQinQuiz)
   
-  console.log("selected",quizSelected)
+ 
 
 
 
@@ -72,11 +74,11 @@ const StartQuiz:React.FC =()=>{
     if (isCorrect) {
       
       setScore(score + 1);
-      dispatch({
-        type: actionTypes.SCORE_QUIZ,
-        data: score
-      })
-    
+      // dispatch({
+      //   type: actionTypes.SCORE_QUIZ,
+      //   data: score
+      // })
+     
 		}
     
      const nextQuestion = currentQuestion + 1;
@@ -87,7 +89,7 @@ const StartQuiz:React.FC =()=>{
       
 		}
     
-    
+  
    
     
   }

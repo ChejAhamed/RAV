@@ -13,6 +13,7 @@ export default {
     SCORE_QUIZ:'SCORE_QUIZ',
     TOTAL_SCORE: 'TOTAL_SCORE',
     
+    UPDATE_USER:'UPDATE_USER',
 
     USERS_LOAD:'USERS_LOAD',
 
