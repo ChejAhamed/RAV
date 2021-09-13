@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { totalScoreUpdate, updateUser } from '../../redux/actions/actionCreator';
-import './Header.css'
+import './Header.scss'
 import { loadAllUsers } from '../../redux/actions/actionCreator';
 const Header:React.FC =()=>{
   
@@ -25,35 +25,35 @@ const Header:React.FC =()=>{
   
   
   return(
-        <header>
-            <div>
-                <div className="logo">
-                  <img src="https://i.ibb.co/rfLVZ9f/logo.png" alt="logo" width="80" height="60"/>
+        <header className="header">
+           
+                <div className="header__logo-container">
+                  <img  className="header__logo-img"src="https://i.ibb.co/rfLVZ9f/logo.png" alt="logo" />
                 </div>
-                <div className="user_details">
-                    <div className="user_details--name">
-                      <p>Name:{user?.name}</p>
+                <div className="header__user-container">
+                    <div className="header__name-container">
+                      <p className="header__user-name">Name:{user?.name}</p>
                     </div>
-                    <div className="user_details--name">
-                      <p>Total Score:{finalScore}</p>
+                    <div className="header__score-container">
+                      <p className="header__score-text">Total Score:{finalScore}</p>
                     </div>
-                    <div className="user_details--name">
-                        <p>Quiz Completed:{user?.quizCompleted}</p>
+                    <div className="header__quiz-container">
+                        <p className="header__quiz-text">Quiz Completed:{user?.quizCompleted}</p>
                     </div>
                       
-                    <div className="user_details--avatar">
-                        <img src={user?.avatar} width="50" height="70" alt="avatar" />
+                    <div className="header__avatar-container">
+                        <img className="header__avatar-img" src={user?.avatar} width="50" height="70" alt="avatar" />
                     </div>
                        
                   </div>
-                  <div className="nav">
-                    <nav>
-                      <Link to="/dashboard">Dashboard</Link>
-                      <Link to="/profile">Profile</Link>
-                      <Link to="/statistics">Statistics</Link>
+                  <div className="header__nav-container">
+                    <nav className="header__navegator">
+                      <Link className="header__nav-link" to="/dashboard">Dashboard</Link>
+                      <Link className="header__nav-link" to="/profile">Profile</Link>
+                      <Link className="header__nav-link" to="/statistics">Statistics</Link>
                   </nav>
                 </div>
-        </div>
+        
       </header>
     )
 }
