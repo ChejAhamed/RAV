@@ -44,12 +44,7 @@ export default function Login () {
   }
 
     
-    const userLogedd=(isAuthenticated)=>{
-      
-      dispatch(login(isAuthenticated))
-     
-     }
-     userLogedd()
+   
   
   return (
     <BoxContainer>

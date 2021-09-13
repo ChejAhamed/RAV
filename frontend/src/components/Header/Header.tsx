@@ -2,26 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../../redux/actions/actionCreator';
-import loginData from '../../pages/Login/Login'
 
-import { loadAllQuiz } from '../../redux/actions/actionCreator';
 import './Header.css'
 import { loadAllUsers } from '../../redux/actions/actionCreator';
 const Header:React.FC =()=>{
   
   const user=useSelector((store:any)=>store.loggedUser?.user?.user)
 
-  const quizz= useSelector((store:any)=>store.quiz)
- console.log("useer dashboard", user?.name)
  
   const dispatch = useDispatch();
-  const allUsers=useSelector((store:any)=>store.loadAllUsers)
   useEffect(() => {
     dispatch(loadAllUsers());
 
     },[]);
-
+  
   
  
   

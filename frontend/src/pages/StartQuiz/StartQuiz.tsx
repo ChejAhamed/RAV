@@ -54,13 +54,15 @@ const StartQuiz:React.FC =()=>{
 
     },[showScore]);
 
-  
+  console.log("quiiiiz",quizz)
     const filteredQuiz= quizz.filter(({category}: any)=>
-    category===choosenTheme );   
+    category===choosenTheme );
+
+    console.log("filltereeeed2",filteredQuiz)
 
   const quizSelected=filteredQuiz.slice(0,numberOfQinQuiz)
   
-  
+  console.log("selected",quizSelected)
 
 
 
