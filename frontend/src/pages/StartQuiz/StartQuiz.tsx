@@ -5,7 +5,7 @@ import { loadAllQuiz, totalScoreUpdate, updateUser } from '../../redux/actions/a
 import scoreQuiz from '../../redux/reducers/addScoreQuizReducer';
 import actionTypes from '../../redux/actions/actionTypes';
 import {loadAllUsers} from '../../redux/actions/actionCreator'
-
+import './StartQuiz.scss'
 interface Score{
   score:number
 }
@@ -95,42 +95,29 @@ const StartQuiz:React.FC =()=>{
   }
   
     return(
-    <div className="score">
-    <div className='app'>
-			{showScore ? (
-				<div className='score-section'>
-					You scored {score} out of {quizSelected?.length}
-          
-				</div>
-			) : (
-				<>
-					<div className='question-section'>
-						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{quizSelected?.length}
-						</div>
-						<div className='question-text'>{quizSelected[currentQuestion]?.question}</div>
-					</div>
-					<div className='answer-section'>
-						{quizSelected[currentQuestion]?.answers?.map((answer:any) => (
-							<button key={answer?._id} onClick={() => handleAnswerButton(answer?.isCorrect)} >{answer?.text + `${answer?.isCorrect}`}</button>
-						))}
-					</div>
-				</>
-			)}
-		</div>
-
-
-
-
-
-
-
-
-
-
-
-       
-
+    <div className="startquiz">
+          <div className='startquiz__score-container'>
+            {showScore ? (
+              <div className='startquiz__score-item'>
+               <p className="startquiz__score-text"> You scored {score} out of {quizSelected?.length}</p>
+                
+              </div>
+            ) : (
+              <>
+                <div className="startquiz__quiz-container">
+                  <div className='startquiz__quiz-box'>
+                    <p className="startquiz__quiz-item">Question {currentQuestion + 1} <span>/{quizSelected?.length}</span> </p>
+                    <p className='startquiz__quiz-element'>{quizSelected[currentQuestion]?.question}</p>
+                  </div>
+                  <div className='startquiz__quiz-answer-box'>
+                  {quizSelected[currentQuestion]?.answers?.map((answer:any) => (
+                    <button className='startquiz__quiz_answer-button' key={answer?._id} onClick={() => handleAnswerButton(answer?.isCorrect)} >{answer?.text + `${answer?.isCorrect}`}</button>
+                  ))}
+                </div>
+                </div>
+              </>
+            )}
+          </div>
 
 
     </div>
