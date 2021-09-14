@@ -22,13 +22,19 @@ const Header:React.FC =()=>{
   
   
  
-  
+   //<img  className="header__logo-img"src="https://i.ibb.co/CHH98h7/1.png" alt="logo" />
   
   return(
         <header className="header">
            
                 <div className="header__logo-container">
-                  <img  className="header__logo-img"src="https://i.ibb.co/CHH98h7/1.png" alt="logo" />
+                  <div className="header_logo-top">
+                  <h1>  R       A      V</h1>
+                  </div>
+                  <div className="header_logo-button">
+                  <h4>React  Angulor  Vue</h4>
+                  
+                  </div>
                 </div>
                 <div className="header__user-container">
                     <div className="header__name-container">
