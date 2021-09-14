@@ -28,7 +28,7 @@ const Statistics:React.FC =()=>{
         <div className="top_player">
             <h3>Top Players</h3>
         </div>
-        <div className="">
+        <div className="statistics_container">
 						
 			 
                 {usersSoted && usersSoted.map((user:any)=>

@@ -1,5 +1,5 @@
 .startquiz {
-  background-color: purple;
+  background-color: #e0efde;
   height: 60vh;
   width: 100vw;
   &__score-container {
@@ -12,8 +12,7 @@
     text-align: center;
     font-size: 2rem;
   }
-  &__quiz-container {
-  }
+
   &__quiz-item {
     color: yellow;
     margin: 25px;

@@ -5,6 +5,9 @@
   align-content: center;
   justify-content: center;
   align-items: center;
+  height: 60vh;
+  width: 100vw;
+  background-color: #e0efde;
 }
 .user_sorted {
   display: flex;
@@ -40,4 +43,10 @@
   align-content: space-around;
   justify-content: space-between;
   align-items: center;
+}
+h3 {
+  color: #49416d;
+}
+p {
+  color: #e08d79;
 }

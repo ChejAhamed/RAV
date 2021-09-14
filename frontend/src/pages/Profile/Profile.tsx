@@ -11,7 +11,7 @@ import {
     SubmitButton,
     
   } from "../Login&Auth/common"
-  
+import './Profile.scss'
 const Profile:React.FC =()=>{
     const [updateData, setUpdateData] = useState({
         name:"",
@@ -43,7 +43,7 @@ const Profile:React.FC =()=>{
     const score = useSelector((store:any)=>store.score)
    
     return(
-    <div> Profile
+    <div className="profile"> Profile
        <BoxContainer>
       <FormContainer>
         <Input type="text" value ={updateData.name} onChange={(event)=>setUpdateData({...updateData, name: event.target.value})} placeholder="Full Name" />
