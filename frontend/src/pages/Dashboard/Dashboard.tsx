@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useSelector , useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {checkActiveQuiz } from '../../redux/actions/actionCreator'
-
+import './Dashboard.scss'
 
 
 const Dashboard:React.FC =()=> {
   
   const authUser=useSelector((store:any)=>store.authUser)
-  console.log("authtificated user dashboard", authUser)
+  
   
   const dispatch= useDispatch();
   function ActivingQuiz():any {
@@ -22,8 +22,11 @@ const Dashboard:React.FC =()=> {
   const [disableSubmitNumberButton, setDisableSubmitNumberButton] = React.useState(false);
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = React.useState(false);
   const [disableSubmitButton, setDisableSubmitButton] = React.useState(true);
+    
+  useEffect(()=>{
 
-  
+
+  })
   
   const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {
@@ -78,17 +81,17 @@ const Dashboard:React.FC =()=> {
 
   return (
     
-    <div>
+    <div className="dashboard">
        
 
       <div className='quizFilter'>
         <div className='technology'>
-        <h2>Choose the theme of the quiz</h2>
+        <h2>Choose the subject of the quiz</h2>
           <div className='technology-options'>
-            <button className='button'onClick={handlerTheme("REACT")}>REACT</button>
-            <button className='button'onClick={handlerTheme("ANGULAR")}>ANGULAR</button>
-            <button className='button'onClick={handlerTheme("VUE")}>VUE</button>
-            <button className='button'onClick={handlerTheme("JS")}>JS</button>
+            <button className='button-react'onClick={handlerTheme("REACT")}></button>
+            <button className='button-angular'onClick={handlerTheme("ANGULAR")}></button>
+            <button className='button-vue'onClick={handlerTheme("VUE")}></button>
+            <button className='button-js'onClick={handlerTheme("JS")}></button>
           </div>
         </div>
         <div className='numberOfQuiz'></div>
@@ -102,7 +105,7 @@ const Dashboard:React.FC =()=> {
           </div>
           
         </div>
-        <div>
+        <div className='sumbit_container'>
         <h2>Ready?</h2>
           <div className='submit'>
           <Link to="/startquiz"> 

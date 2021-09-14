@@ -21,7 +21,7 @@ import Header from './components/Header/Header';
 import Profile from './pages/Profile/Profile';
 import NotFound from './pages/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
-import Statistics from './pages/Statistics/Statiscs';
+import Statistics from './pages/Statistics/Statistics';
 import StartQuiz from './pages/StartQuiz/StartQuiz';
 import configureStore from './redux/store';
 
@@ -31,21 +31,26 @@ function App() {
     <BrowserRouter>
      
   
-        <Header /> 
+        
           <Switch> 
-         
           <Route path='/' exact component={LoginRegister}/>
-         <Route path="/dashboard" component={Dashboard} />
+            <div>
+            
+            <Header /> 
+           
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/profile" component={Profile} />
           <Route path="/statistics" component={Statistics} />
           <Route path="/startquiz" component={StartQuiz} />
+          
+          <Footer />
+          </div>
           <Route component={NotFound} />
-        
-         
         </Switch>
-           <Footer />
+          
         
     </BrowserRouter>
+    
     </Provider>
   );
 }

@@ -14,19 +14,7 @@ import { signup } from "../../redux/actions/actionCreator";
 
 export function Register() {
   const { switchToSignin } = useContext(AccountContext);
- /* const isAuthenticated = useSelector(({ auth }) => auth.isAuthenticated);
-  const [name, setName] = useState('');
 
-  const dispatch = useDispatch();
-
-  function handleLoginClick(event) {
-    event.preventDefault();
-    dispatch(login(name));
-  }
-
-  if (isAuthenticated) {
-    return <Redirect to="/" />;
-  }*/
   const [signupData, setSignupData] = useState({
     name:"",
     email:"",
@@ -48,11 +36,11 @@ export function Register() {
     dispatch(signup(signupData));
     console.log(signupData)
     
-    } else(
+    } else{
       alert('Both password are not matching')
-    )
     
-   
+    }
+    
   }
   return (
     <BoxContainer>

@@ -4,18 +4,21 @@ import quiz from './quizReducers';
 import activeQuiz from './activeQuizReducer';
 import scoreQuiz from './addScoreQuizReducer';
 import totalScore from './totalScoreReducer';
-import users from './userReducer';
 import tokensReducer from './tokenReducer';
-
-import authUser from './authReducers';
+import loadAllUsers from './loadAllUsersReducer';
+import loggedUser from './loggedUserReducers';
+import usersReducer from './userReducer';
 export default combineReducers({
+ 
+  loggedUser,
+  usersReducer,
   quiz,
   activeQuiz,
   scoreQuiz,
   totalScore,
-  users,
-  authUser,
   tokensReducer,
+  loadAllUsers
+
   
 
 });

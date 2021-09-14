@@ -2,17 +2,56 @@ import axios from 'axios';
 
 import actionTypes from './actionTypes';
 
-import userRefreshToken from './authActionCreator';
+export function updateUser(propertyName,value,userId){
+  return async dispatch=>{
+    try{
+      const body={}
+      body[`${propertyName}`]=value
+      const {data}=await axios.put(`http://localhost:5000/api/user/${userId}`,body)
+      
+      dispatch({
+        type:actionTypes.UPDATE_USER,
+        payload:{
+          propertyName,
+          value
+        }
+      })
+    } catch(error){
+      console.log(error)
+    }
+  }
 
+}
 
-export function loadAllQuiz(token,refreshToken) {
+export function loadAllUsers() {
   return async dispatch => {
-    if(token){
+   
         try {
           
-          const {data} = await axios.get('http://localhost:5000/api/quiz',
-         { headers: { Authorization: `Bearer ${token}`}});
+          const {data} = await axios.get('http://localhost:5000/api/user');
           
+          dispatch({
+            type: actionTypes.LOAD_ALL_USERS,
+            data,
+            
+          });
+        } catch (error) {
+          console.log(error);
+        }
+   
+   return true;
+    
+  };
+}
+
+export function loadAllQuiz() {
+  return async dispatch => {
+   
+        try {
+          
+          const {data} = await axios.get('http://localhost:5000/api/quiz'
+         );
+      
           dispatch({
             type: actionTypes.LOAD_ALL_QUIZ,
             data,
@@ -21,8 +60,9 @@ export function loadAllQuiz(token,refreshToken) {
         } catch (error) {
           console.log(error);
         }
-   }
-   return userRefreshToken(refreshToken);
+   
+
+   return true;
     
   };
 }
@@ -54,8 +94,14 @@ export function addScoreQuiz(data){
     }
   }
 }
-export function totalScore(data){
-  return dispatch=>{
+export function totalScoreUpdate({sessionScore, userId}){ 
+  const user={
+    totalScore:sessionScore
+  }
+  return async dispatch=>{
+    const {data} = await axios.put(
+      `http://localhost:5000/api/user/${userId}`,
+    user);
     try {
       dispatch({
         type: actionTypes.TOTAL_SCORE,
@@ -68,11 +114,11 @@ export function totalScore(data){
   }
 }
 export function login(loginData) {
-  console.log(loginData)
+  
   return async (dispatch) => {
+    
     try {
       const { data } = await axios.post('http://localhost:5000/api/auth/login', loginData );
-      console.log(data)
       return dispatch({
         type: actionTypes.AUTH_LOGIN,
         user: data,
@@ -110,11 +156,11 @@ export function loadUsers() {
 }
 
 export function signup(signupData) {
-  console.log(signupData)
+  
   return async (dispatch) => {
     try {
       const { data } = await axios.post('/api/auth/signup',  signupData );
-      console.log(data)
+      
       return dispatch({
         type: actionTypes.AUTH_SIGNUP,
         user: data,
