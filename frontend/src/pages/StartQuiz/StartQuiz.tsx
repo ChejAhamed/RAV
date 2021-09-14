@@ -15,7 +15,7 @@ const StartQuiz:React.FC =()=>{
   const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const {user}=useSelector((store:any)=>store.loggedUser)
   const quizzCompletedUpdate=useSelector((store:any)=>store.loggedUser?.user?.user?.quizCompleted)
-  console.log("loco",quizzCompletedUpdate)
+  
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
@@ -53,10 +53,10 @@ const StartQuiz:React.FC =()=>{
    const  userId=user.user._id
     setTotalScore(value)
   
-    //dispatch(totalScoreUpdate(data))
+    
     dispatch(updateUser("totalScore",value,userId))
     dispatch(updateUser("quizCompleted",quizCompleted,userId))
-    //dispatch(updateUser("completedQuiz",value,userId))
+    
     },[showScore]);
 
  

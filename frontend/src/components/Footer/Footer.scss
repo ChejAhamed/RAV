@@ -28,3 +28,10 @@ a.twitter {
 a.instagram {
   color: black;
 }
+.social-container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

@@ -71,3 +71,11 @@ a {
 .header__nav-link:hover {
   color: purple;
 }
+@media (min-width: 320px) and (max-width: 480px) {
+  .header__user-container {
+    flex-flow: column nowrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+}

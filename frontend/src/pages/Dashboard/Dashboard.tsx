@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector , useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {checkActiveQuiz } from '../../redux/actions/actionCreator'
-
+import './Dashboard.scss'
 
 
 const Dashboard:React.FC =()=> {
@@ -105,7 +105,7 @@ const Dashboard:React.FC =()=> {
           </div>
           
         </div>
-        <div>
+        <div className='sumbit_container'>
         <h2>Ready?</h2>
           <div className='submit'>
           <Link to="/startquiz"> 

@@ -6,7 +6,7 @@ import {
     faTwitter,
     faInstagram
   } from "@fortawesome/free-brands-svg-icons";
-import './Footer.css'
+import './Footer.scss'
 const Footer:React.FC =()=>{
     return(
         <footer>
