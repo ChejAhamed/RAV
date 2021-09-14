@@ -81,17 +81,17 @@ const Dashboard:React.FC =()=> {
 
   return (
     
-    <div>
+    <div className="dashboard">
        
 
       <div className='quizFilter'>
         <div className='technology'>
-        <h2>Choose the theme of the quiz</h2>
+        <h2>Choose the subject of the quiz</h2>
           <div className='technology-options'>
-            <button className='button'onClick={handlerTheme("REACT")}>REACT</button>
-            <button className='button'onClick={handlerTheme("ANGULAR")}>ANGULAR</button>
-            <button className='button'onClick={handlerTheme("VUE")}>VUE</button>
-            <button className='button'onClick={handlerTheme("JS")}>JS</button>
+            <button className='button-react'onClick={handlerTheme("REACT")}></button>
+            <button className='button-angular'onClick={handlerTheme("ANGULAR")}></button>
+            <button className='button-vue'onClick={handlerTheme("VUE")}></button>
+            <button className='button-js'onClick={handlerTheme("JS")}></button>
           </div>
         </div>
         <div className='numberOfQuiz'></div>

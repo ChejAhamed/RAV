@@ -43,7 +43,7 @@ const Profile:React.FC =()=>{
     const score = useSelector((store:any)=>store.score)
    
     return(
-    <div>Profile=====
+    <div> Profile
        <BoxContainer>
       <FormContainer>
         <Input type="text" value ={updateData.name} onChange={(event)=>setUpdateData({...updateData, name: event.target.value})} placeholder="Full Name" />
