@@ -28,7 +28,7 @@ const Header:React.FC =()=>{
         <header className="header">
            
                 <div className="header__logo-container">
-                  <img  className="header__logo-img"src="https://i.ibb.co/rfLVZ9f/logo.png" alt="logo" />
+                  <img  className="header__logo-img"src="https://i.ibb.co/CHH98h7/1.png" alt="logo" />
                 </div>
                 <div className="header__user-container">
                     <div className="header__name-container">

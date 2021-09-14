@@ -14,13 +14,15 @@ const StartQuiz:React.FC =()=>{
   const authUser=useSelector((store:any)=>store.authUser)
   const {numberOfQinQuiz, choosenTheme} = useSelector((store:any) => store.activeQuiz);
   const {user}=useSelector((store:any)=>store.loggedUser)
-  
+  const quizzCompletedUpdate=useSelector((store:any)=>store.loggedUser?.user?.user?.quizCompleted)
+  console.log("loco",quizzCompletedUpdate)
   const quizz= useSelector((store:any)=>store.quiz)
   const dispatch = useDispatch();
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [score, setScore] = React.useState(0)
   const [showScore, setShowScore] = React.useState(false);
   const [totalScore, setTotalScore] = React.useState(user?.totalScore)
+  const [quizCompleted, setQuizCompleted ]= React.useState(quizzCompletedUpdate)
 
   // const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
 //  const token2= localStorage.getItem('jwt');
@@ -53,6 +55,7 @@ const StartQuiz:React.FC =()=>{
   
     //dispatch(totalScoreUpdate(data))
     dispatch(updateUser("totalScore",value,userId))
+    dispatch(updateUser("quizCompleted",quizCompleted,userId))
     //dispatch(updateUser("completedQuiz",value,userId))
     },[showScore]);
 
@@ -86,7 +89,7 @@ const StartQuiz:React.FC =()=>{
 			setCurrentQuestion(nextQuestion);
 		} else {
 			setShowScore(true);
-      
+      setQuizCompleted(quizCompleted+1)
 		}
     
   
