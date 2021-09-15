@@ -22,6 +22,7 @@ const Header:React.FC =()=>{
   
   
  
+   //<img  className="header__logo-img"src="https://i.ibb.co/CHH98h7/1.png" alt="logo" />
   
   return(
         <header className="header">
@@ -37,13 +38,13 @@ const Header:React.FC =()=>{
                 </div>
                 <div className="header__user-container">
                     <div className="header__name-container">
-                      <p className="header__user-name">Name:{user?.name}</p>
+                      <p className="header__user-name">Name: {user?.name}</p>
                     </div>
                     <div className="header__score-container">
-                      <p className="header__score-text">Total Score:{finalScore}</p>
+                      <p className="header__score-text">Total Score: {finalScore}</p>
                     </div>
                     <div className="header__quiz-container">
-                        <p className="header__quiz-text">Quiz Completed:{user?.quizCompleted}</p>
+                        <p className="header__quiz-text">Quiz Completed: {user?.quizCompleted}</p>
                     </div>
                       
                     <div className="header__avatar-container">
