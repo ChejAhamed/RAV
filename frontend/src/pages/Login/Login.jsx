@@ -1,7 +1,6 @@
 
 import React, { useState, useContext, useEffect } from "react";
 import { useSelector, useDispatch  } from "react-redux";
-import { Redirect } from "react-router";
 import { useHistory } from "react-router";
 import {
   BoldLink,
