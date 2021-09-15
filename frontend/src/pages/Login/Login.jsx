@@ -1,5 +1,5 @@
 
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useSelector, useDispatch  } from "react-redux";
 import { useHistory } from "react-router";
 import {
@@ -53,7 +53,7 @@ export default function Login () {
       <Marginer direction="vertical" margin={10} />
       <MutedLink href="#">Forget your password?</MutedLink>
       <Marginer direction="vertical" margin="1.6em" />
-      <SubmitButton onClick={handleLoginClick} type="submit">Signin</SubmitButton>
+      <SubmitButton onClick={handleLoginClick} data-textid="submit" type="submit">Signin</SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
         Don't have an accoun?{" "}

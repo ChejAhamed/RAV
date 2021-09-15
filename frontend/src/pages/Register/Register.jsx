@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useSelector, useDispatch  } from "react-redux";
+import { useDispatch  } from "react-redux";
 import {
   BoldLink,
   BoxContainer,

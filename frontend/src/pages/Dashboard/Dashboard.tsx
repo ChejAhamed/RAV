@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { checkActiveQuiz } from '../../redux/actions/actionCreator';
 import './Dashboard.scss';
 
 const Dashboard: React.FC = () => {
-  const authUser = useSelector((store: any) => store.authUser);
-
+  
+  const [disableSubmitButton, setDisableSubmitButton] = React.useState(true);
   const dispatch = useDispatch();
   function ActivingQuiz(): any {
     dispatch(checkActiveQuiz(activeQuiz));
@@ -23,9 +23,8 @@ const Dashboard: React.FC = () => {
     disableSubmitThemeButton,
     setDisableSubmitThemeButton,
   ] = React.useState(false);
-  const [disableSubmitButton, setDisableSubmitButton] = React.useState(true);
 
-  useEffect(() => {});
+  
 
   const handlerTheme = (themeSelected: string) => {
     return (event: React.MouseEvent) => {

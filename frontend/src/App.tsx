@@ -11,7 +11,7 @@ const AppContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom'
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import { Provider } from 'react-redux';
 
 

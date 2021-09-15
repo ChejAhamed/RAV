@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  loadAllQuiz,
-  totalScoreUpdate,
-  updateUser,
-} from '../../redux/actions/actionCreator';
-import scoreQuiz from '../../redux/reducers/addScoreQuizReducer';
-import actionTypes from '../../redux/actions/actionTypes';
+import { loadAllQuiz, updateUser,} from '../../redux/actions/actionCreator';
+
 import { loadAllUsers } from '../../redux/actions/actionCreator';
 import './StartQuiz.scss';
 interface Score {
@@ -14,7 +9,7 @@ interface Score {
 }
 
 const StartQuiz: React.FC = () => {
-  const authUser = useSelector((store: any) => store.authUser);
+  
   const { numberOfQinQuiz, choosenTheme } = useSelector(
     (store: any) => store.activeQuiz
   );
@@ -22,6 +17,7 @@ const StartQuiz: React.FC = () => {
   const quizzCompletedUpdate = useSelector(
     (store: any) => store.loggedUser?.user?.user?.quizCompleted
   );
+ 
 
   const quizz = useSelector((store: any) => store.quiz);
   const dispatch = useDispatch();
@@ -32,15 +28,8 @@ const StartQuiz: React.FC = () => {
   const [quizCompleted, setQuizCompleted] = React.useState(
     quizzCompletedUpdate
   );
-
-  // const { token, refreshToken } = useSelector((store:any) => store.tokensReducer);
-  //  const token2= localStorage.getItem('jwt');
-  //  const refreshToken2=localStorage.getItem('jwt')
-
-  /*function updatingScore():any {
-    dispatch(scoreQuiz(score))
-  }
- */
+    console.log(quizzCompletedUpdate)
+ 
 
   useEffect(() => {
     dispatch(loadAllUsers());
@@ -51,25 +40,17 @@ const StartQuiz: React.FC = () => {
     const value = user.user.totalScore + score;
     const userId = user.user._id;
     setTotalScore(value);
-
+    
     dispatch(updateUser('totalScore', value, userId));
     dispatch(updateUser('quizCompleted', quizCompleted, userId));
   }, [showScore]);
 
-  const filteredQuiz = quizz.filter(
-    ({ category }: any) => category === choosenTheme
-  );
+  const filteredQuiz = quizz.filter(({ category }: any) => category === choosenTheme );
 
   const quizSelected = filteredQuiz.slice(0, numberOfQinQuiz);
 
   const handleAnswerButton = (isCorrect: any) => {
-    if (isCorrect) {
-      setScore(score + 1);
-      // dispatch({
-      //   type: actionTypes.SCORE_QUIZ,
-      //   data: score
-      // })
-    }
+    if (isCorrect) { setScore(score + 1); }
 
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < quizSelected.length) {
@@ -105,7 +86,7 @@ const StartQuiz: React.FC = () => {
                     key={answer?._id}
                     onClick={() => handleAnswerButton(answer?.isCorrect)}
                   >
-                    {answer?.text + `${answer?.isCorrect}`}
+                    {answer?.text}
                   </button>
                 ))}
               </div>

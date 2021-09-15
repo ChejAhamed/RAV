@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { totalScoreUpdate, updateUser } from '../../redux/actions/actionCreator';
+import { updateUser } from '../../redux/actions/actionCreator';
 import './Header.scss'
 import { loadAllUsers } from '../../redux/actions/actionCreator';
 const Header:React.FC =()=>{
@@ -22,8 +22,7 @@ const Header:React.FC =()=>{
   
   
  
-   //<img  className="header__logo-img"src="https://i.ibb.co/CHH98h7/1.png" alt="logo" />
-  
+   
   return(
         <header className="header">
            

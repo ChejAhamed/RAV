@@ -1,8 +1,5 @@
-
-import { Link } from 'react-router-dom';
-import React, { useState, useContext } from "react";
-import { useSelector, useDispatch  } from "react-redux";
-
+import React, { useState } from "react";
+import { useDispatch  } from "react-redux";
 import { Marginer } from "../Login&Auth/marginer";
 import {
     BoxContainer,
@@ -22,14 +19,14 @@ const Profile:React.FC =()=>{
         avatar:"",
       
       });
-      const dispatch = useDispatch();
+    const dispatch = useDispatch();
       const [repetPassword, setRepetPassword] = useState({
     
         password:""
       
       });
       
-      function handleSignupClick(event:any) {
+    function handleSignupClick(event:any) {
         if (repetPassword.password===updateData.password){
         event.preventDefault();
         
