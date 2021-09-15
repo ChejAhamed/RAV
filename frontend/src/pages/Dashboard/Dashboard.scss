@@ -67,6 +67,12 @@ h2 {
     rgba(241, 196, 15, 1) 20%,
     rgba(243, 172, 18, 1) 100%
   );
+
+  &:active,
+  &:hover {
+    border-color: #191a1b;
+    box-shadow: 0 0 0 0.25rem rgb(130 138 145 / 50%);
+  }
 }
 
 .btn-secondary {
@@ -82,15 +88,14 @@ h2 {
   -webkit-transition: all, 240ms ease-in-out;
   transition: all, 240ms ease-in-out;
   background: rgb(218 214 214 / 30%);
-  button {
-    margin: 15px;
-    border: 0;
-    border-radius: 10px;
-    &:active,
-    &:hover {
-      border-color: #191a1b;
-      box-shadow: 0 0 0 0.25rem rgb(130 138 145 / 50%);
-    }
+
+  margin: 15px;
+  border: 0;
+  border-radius: 10px;
+  &:active,
+  &:hover {
+    border-color: #191a1b;
+    box-shadow: 0 0 0 0.25rem rgb(130 138 145 / 50%);
   }
 }
 
