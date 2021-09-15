@@ -78,17 +78,14 @@ const Dashboard: React.FC = () => {
           <h2>Choose the subject of the quiz</h2>
           <div className='technology-options'>
             <button
-              className='button-react'
-              onClick={handlerTheme('REACT')}
+              className='button-react' onClick={handlerTheme('REACT')}
             ></button>
             <button
-              className='button-angular'
-              onClick={handlerTheme('ANGULAR')}
+              className='button-angular' onClick={handlerTheme('ANGULAR')}
             ></button>
             <br />
             <button
-              className='button-vue'
-              onClick={handlerTheme('VUE')}
+              className='button-vue'  onClick={handlerTheme('VUE')}
             ></button>
             <button className='button-js' onClick={handlerTheme('JS')}></button>
           </div>
