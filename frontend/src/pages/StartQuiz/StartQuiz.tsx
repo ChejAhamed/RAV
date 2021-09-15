@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { loadAllQuiz, totalScoreUpdate, updateUser } from '../../redux/actions/actionCreator';
-import scoreQuiz from '../../redux/reducers/addScoreQuizReducer';
-import actionTypes from '../../redux/actions/actionTypes';
+// import scoreQuiz from '../../redux/reducers/addScoreQuizReducer';
+// import actionTypes from '../../redux/actions/actionTypes';
 import {loadAllUsers} from '../../redux/actions/actionCreator'
 import './StartQuiz.scss'
 interface Score{

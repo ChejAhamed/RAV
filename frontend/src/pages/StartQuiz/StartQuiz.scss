@@ -14,13 +14,13 @@
   }
 
   &__quiz-item {
-    color: yellow;
+    color: #4a416d;
     margin: 25px;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
   &__quiz-element {
-    font-size: 1.5rem;
-    color: pink;
+    font-size: 1.6rem;
+    color: #4a416d;
   }
   &__quiz-answer-box {
     width: 300px;
@@ -40,4 +40,39 @@
     background-color: purple;
     color: yellow;
   }
+}
+
+.btn-primary {
+  width: 300px;
+  margin: 10px 0px;
+  padding: 11px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px 100px 100px 100px;
+  cursor: pointer;
+  -webkit-transition: all, 240ms ease-in-out;
+  transition: all, 240ms ease-in-out;
+  background: rgb(241, 196, 15);
+  background: linear-gradient(
+    58deg,
+    rgba(241, 196, 15, 1) 20%,
+    rgba(243, 172, 18, 1) 100%
+  );
+}
+
+.btn-secondary {
+  width: 300px;
+  margin: 10px 0px;
+  padding: 11px;
+  color: #4e3f00;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px 100px 100px 100px;
+  cursor: pointer;
+  -webkit-transition: all, 240ms ease-in-out;
+  transition: all, 240ms ease-in-out;
+  background: rgb(218 214 214 / 30%);
 }

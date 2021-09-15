@@ -12,6 +12,8 @@ import {
     
   } from "../Login&Auth/common"
 import './Profile.scss'
+
+
 const Profile:React.FC =()=>{
     const [updateData, setUpdateData] = useState({
         name:"",
@@ -30,17 +32,17 @@ const Profile:React.FC =()=>{
       function handleSignupClick(event:any) {
         if (repetPassword.password===updateData.password){
         event.preventDefault();
-        //dispatch(signup(updateData));
+        
         
         }  else{
-            alert('Both password are not matching')
+            alert('Both passwords are not matching')
           
           }
           
         
        
       }
-    const score = useSelector((store:any)=>store.score)
+      
    
     return(
     <div className="profile"> Profile

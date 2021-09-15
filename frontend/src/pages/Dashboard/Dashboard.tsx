@@ -7,7 +7,7 @@ import './Dashboard.scss'
 
 const Dashboard:React.FC =()=> {
   
-  const authUser=useSelector((store:any)=>store.authUser)
+  // const authUser=useSelector((store:any)=>store.authUser)
   
   
   const dispatch= useDispatch();
@@ -23,19 +23,16 @@ const Dashboard:React.FC =()=> {
   const [disableSubmitThemeButton, setDisableSubmitThemeButton] = React.useState(false);
   const [disableSubmitButton, setDisableSubmitButton] = React.useState(true);
     
-  useEffect(()=>{
+  useEffect(() => {
+    if (disableSubmitNumberButton && disableSubmitThemeButton)  {setDisableSubmitButton(false)}});
 
-
-  })
-  
   const handlerTheme=(themeSelected: string)=>{
     return (event: React.MouseEvent) => {
       
        activeQuiz.choosenTheme=themeSelected;
   
       setDisableSubmitThemeButton(true)
-      
-      
+
       }
       
     }
@@ -53,21 +50,18 @@ const Dashboard:React.FC =()=> {
 
       }
       
-      useEffect(() => {
-          if (disableSubmitNumberButton && disableSubmitThemeButton)  {
-            setDisableSubmitButton(false)}
-          
-        });
-  const handlerSubmit=( numberOfQuizSelected: any,themeSelected: any)=>{
+  
+
+    const handlerSubmit=( numberOfQuizSelected: any,themeSelected: any)=>{
     return (event: React.MouseEvent) => {
       activeQuiz.choosenTheme=themeSelected;
       activeQuiz.numberOfQinQuiz=numberOfQuizSelected;
   
-    ActivingQuiz()
+      ActivingQuiz()
     
-    }
+     }
   
-  }
+    }
   
   const handlerResetOptions=(numberOfQinQuiz:number, choosenTheme:string)=>{
     return (event: React.MouseEvent) => {
@@ -75,14 +69,13 @@ const Dashboard:React.FC =()=> {
       numberOfQinQuiz= 0;
       choosenTheme="";
       alert('Please choose wisely!')
-    }
+      }
     }
   }
 
   return (
     
     <div className="dashboard">
-       
 
       <div className='quizFilter'>
         <div className='technology'>
@@ -114,18 +107,12 @@ const Dashboard:React.FC =()=> {
           </div>
           <div className='reset'>
 
-            
-                <button type='button'  onClick={handlerResetOptions(activeQuiz.numberOfQinQuiz ,activeQuiz.choosenTheme)}>Reset Choice</button>
-            
-
+            <button type='button'  onClick={handlerResetOptions(activeQuiz.numberOfQinQuiz ,activeQuiz.choosenTheme)}>Reset Choice</button>
+ 
           </div>
           
         </div>
-
-
-      
-     
-        
+  
     </div>
   );
 };

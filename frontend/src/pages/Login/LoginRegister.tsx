@@ -1,4 +1,4 @@
-import "../Login/LoginRegister.css";
+import "../Login/LoginRegister.scss";
 import styled from "styled-components";
 import { AccountBox } from "../Login&Auth";
 

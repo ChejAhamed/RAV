@@ -1,6 +1,6 @@
 .dashboard {
   background-color: #e0efde;
-  height: 60vh;
+  height: 100%;
   width: 100vw;
 }
 .quizFilter {
@@ -21,30 +21,83 @@
   background-image: url(https://i.ibb.co/dJyShVz/Dise-o-sin-t-tulo-3.png);
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
 }
 .button-vue {
   background-image: url(https://i.ibb.co/WBgFNT4/vue.png);
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
 }
 .button-angular {
   background-image: url(https://i.ibb.co/JmLbQdH/angular.png);
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
 }
 .button-js {
   background-image: url(https://i.ibb.co/YNPMyyG/jss.png);
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
 }
 h2 {
   color: #a882dd;
+}
+
+.btn-primary {
+  width: 300px;
+  margin: 10px 0px;
+  padding: 11px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px 100px 100px 100px;
+  cursor: pointer;
+  -webkit-transition: all, 240ms ease-in-out;
+  transition: all, 240ms ease-in-out;
+  background: rgb(241, 196, 15);
+  background: linear-gradient(
+    58deg,
+    rgba(241, 196, 15, 1) 20%,
+    rgba(243, 172, 18, 1) 100%
+  );
+}
+
+.btn-secondary {
+  width: 300px;
+  margin: 10px 0px;
+  padding: 11px;
+  color: #f1c40f;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px 100px 100px 100px;
+  cursor: pointer;
+  -webkit-transition: all, 240ms ease-in-out;
+  transition: all, 240ms ease-in-out;
+  background: rgb(218 214 214 / 30%);
+}
+
+.technology-options {
+  button {
+    margin: 15px;
+    border: 0;
+    border-radius: 10px;
+    &:active,
+    &:hover {
+      border-color: #565e64;
+      box-shadow: 0 0 0 0.25rem rgb(130 138 145 / 50%);
+    }
+  }
+}
+
+h2 {
+  margin: 15px;
+  font-size: 20px;
 }

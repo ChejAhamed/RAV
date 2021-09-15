@@ -22,7 +22,6 @@ const Header:React.FC =()=>{
   
   
  
-   //<img  className="header__logo-img"src="https://i.ibb.co/CHH98h7/1.png" alt="logo" />
   
   return(
         <header className="header">
